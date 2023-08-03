@@ -19,7 +19,6 @@ public class TimeServlet extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		out.print("Time: " + new Date());
 		out.close();
-		
 	}
 	
 }
