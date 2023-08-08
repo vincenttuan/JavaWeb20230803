@@ -2,6 +2,9 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.LinkedHashSet;
+import java.util.Random;
+import java.util.Set;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -29,6 +32,23 @@ public class LottoServlet extends HttpServlet {
 		
 		// 2. 取得 count 字串參數
 		String countStr = req.getParameter("count");
+		int count = 1;
+		if(countStr != null) {
+			count = Integer.parseInt(countStr);
+			if(count == 0) {
+				count = 1;
+			}
+		}
+		
+		// 3. 取得 count 個(1~10)不重複的數字
+		Random random = new Random();
+		Set<Integer> nums = new LinkedHashSet<>();
+		while (nums.size() < count) {
+			nums.add(random.nextInt(10) + 1);
+		}
+		
+		// 4. 回應
+		out.print(String.format("%d 個幸運數字 %s", count, nums));
 		
 		
 	}
