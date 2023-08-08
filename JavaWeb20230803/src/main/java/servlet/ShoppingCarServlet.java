@@ -1,7 +1,12 @@
 package servlet;
 
+import java.io.IOException;
+
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /*
  * .../servlet/shoppingcar?name=coffee&coffee_price=100&coffee_price=80&name=cake&cake_price=50&cake_price=40&cake_price=30
@@ -16,6 +21,11 @@ import jakarta.servlet.http.HttpServlet;
 
 @WebServlet("/servlet/shoppingcar")
 public class ShoppingCarServlet extends HttpServlet {
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+	}
 	
 	
 }
