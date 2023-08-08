@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+//舉例:
 //網址: .../servlet/lotto?count=5 表示要得到 5 個 (1~10) 不重複的幸運數字
 //網址: .../servlet/lotto?count=2 表示要得到 2 個 (1~10) 不重複的幸運數字
 //網址: .../servlet/lotto?count=0 表示要得到 1 個 (1~10) 的幸運數字
