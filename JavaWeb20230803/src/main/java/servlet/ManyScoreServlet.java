@@ -36,7 +36,9 @@ public class ManyScoreServlet extends HttpServlet {
 		}
 		
 		// 3. 計算總分
-		IntSummaryStatistics stat = Arrays.stream(scores).mapToInt(Integer::parseInt).summaryStatistics();
+		IntSummaryStatistics stat = Arrays.stream(scores)
+										  .mapToInt(Integer::parseInt)
+										  .summaryStatistics();
 		
 		out.print(String.format("總分:%d, 平均:%.1f", stat.getSum(), stat.getAverage()));
 		
