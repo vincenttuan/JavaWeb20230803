@@ -48,7 +48,7 @@ public class ShoppingCarServlet extends HttpServlet {
 		sb.append("購物車資料如下<br>");
 		if(names != null && names.length > 0) {
 			
-			for(String name : names) {
+			for(String name : names) { // coffee 與 cake
 				String[] prices = req.getParameterValues(name + "_price");
 				if(prices != null) {
 					int subTotal = Arrays.stream(prices).mapToInt(Integer::parseInt).sum(); // 小計
