@@ -12,6 +12,17 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/servlet/exam")
 public class ExamServlet extends HttpServlet {
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html;charset=UTF-8"); // 給瀏覽器看的
+		
+		// 設定回應物件
+		PrintWriter out = resp.getWriter();
+		out.println("請按下此 <a href='/JavaWeb20230803/html/examform.html'>連結</a> 進入到考試註冊頁面");
+	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
