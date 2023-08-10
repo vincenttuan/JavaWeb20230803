@@ -43,6 +43,7 @@ public class ExamServlet extends HttpServlet {
 		out.print(String.format("時段: %s <p>", Arrays.toString(examPeriods)));
 		out.print(String.format("備註: %s <p>", memo));
 		
+		out.print("<button type='button' onclick='history.back()' >回上一頁</button>");
 	}
 	
 	
