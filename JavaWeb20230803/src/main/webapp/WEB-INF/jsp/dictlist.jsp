@@ -32,8 +32,8 @@
 				    	<% for(String key : keys) { %>
 				        <tr onmouseover="this.style.backgroundColor='#DDDDDD';" onmouseout="this.style.backgroundColor='#FFFFFF';">
 				            <td><%=rowNumber++ %></td>
-				            <td><%=key %></td>
-				            <td><%=dict.get(key) %></td>
+				            <td style="cursor:pointer" title="<%=dict.get(key) %>"><%=key %></td>
+				            <td style="cursor:pointer" title="<%=key %>"><%=dict.get(key) %></td>
 				        </tr>
 				        <% } %>
 				    </tbody>
