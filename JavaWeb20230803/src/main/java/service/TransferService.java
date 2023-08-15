@@ -11,7 +11,7 @@ public class TransferService {
 		
 		String result = transferDao.getByWord(word);
 		if(result == null) {
-			result = "我不知道";
+			result = "字典資料庫無此紀錄";
 		}
 		
 		return result;
