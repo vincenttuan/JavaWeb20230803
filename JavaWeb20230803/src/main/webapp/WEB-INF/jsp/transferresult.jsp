@@ -12,8 +12,8 @@
 		<form method="get" action="/JavaWeb20230803/html/transferform.html" class="pure-form">
 			<fieldset>
 				<legend>翻譯服務器-結果</legend>
-				英文: <%=request.getAttribute("word") %><p />
-				中文: <%=request.getAttribute("result") %><p />
+				原文: <%=request.getAttribute("word") %><p />
+				翻譯: <%=request.getAttribute("result") %><p />
 				<button type="submit" class="pure-button pure-button-primary">回上一頁</button>	 
 			</fieldset>
 		</form>
