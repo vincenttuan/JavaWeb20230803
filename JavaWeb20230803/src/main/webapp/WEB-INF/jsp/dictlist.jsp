@@ -1,3 +1,5 @@
+<%@page import="java.util.Set"%>
+<%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,35 +14,27 @@
 		<form method="get" action="/JavaWeb20230803/html/transferform.html" class="pure-form">
 			<fieldset>
 				<legend>所有字典列表</legend>
-				<%=request.getAttribute("dict") %><p />
+				<% 
+					Map<String, String> dict = (Map<String, String>)request.getAttribute("dict");
+					Set<String> keys = dict.keySet();
+				%>
+				<%=dict %><p />
 				<table class="pure-table pure-table-bordered">
 				    <thead>
 				        <tr>
 				            <th>#</th>
-				            <th>Make</th>
-				            <th>Model</th>
-				            <th>Year</th>
+				            <th>原文</th>
+				            <th>翻譯</th>
 				        </tr>
 				    </thead>
 				    <tbody>
+				    	<% for(String key : keys) { %>
 				        <tr>
 				            <td>1</td>
-				            <td>Honda</td>
-				            <td>Accord</td>
-				            <td>2009</td>
+				            <td><%=key %></td>
+				            <td><%=dict.get(key) %></td>
 				        </tr>
-				        <tr>
-				            <td>2</td>
-				            <td>Toyota</td>
-				            <td>Camry</td>
-				            <td>2012</td>
-				        </tr>
-				        <tr>
-				            <td>3</td>
-				            <td>Hyundai</td>
-				            <td>Elantra</td>
-				            <td>2010</td>
-				        </tr>
+				        <% } %>
 				    </tbody>
 				</table>
 				<p />
