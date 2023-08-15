@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Transfer Form</title>
-</head>
-<body>
-	
-	
-	
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<title>Transfer Form</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+	</head>
+	<body style="padding: 15px">
+		
+		<form method="post" action="/JavaWeb20230803/servlet/transfer" class="pure-form">
+			<fieldset>
+				<legend>翻譯服務器</legend>
+				英文: <input type="text" placeholder="請輸入英文" id="word" name=""word"" required /><p />
+				<button type="reset" class="button-warning pure-button">重設</button>
+				<button type="submit" class="pure-button pure-button-primary">傳送</button>	 
+			</fieldset>
+		</form>
+		
+	</body>
 </html>
