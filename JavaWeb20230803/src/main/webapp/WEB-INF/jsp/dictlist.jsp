@@ -17,6 +17,7 @@
 				<% 
 					Map<String, String> dict = (Map<String, String>)request.getAttribute("dict");
 					Set<String> keys = dict.keySet();
+					int rowNumber = 1;
 				%>
 				<%=dict %><p />
 				<table class="pure-table pure-table-bordered">
@@ -30,7 +31,7 @@
 				    <tbody>
 				    	<% for(String key : keys) { %>
 				        <tr>
-				            <td>1</td>
+				            <td><%=rowNumber++ %></td>
 				            <td><%=key %></td>
 				            <td><%=dict.get(key) %></td>
 				        </tr>
