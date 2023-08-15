@@ -23,7 +23,7 @@
 				<table class="pure-table pure-table-bordered">
 				    <thead>
 				        <tr>
-				            <th>#</th>
+				            <th>序號</th>
 				            <th>原文</th>
 				            <th>翻譯</th>
 				        </tr>
