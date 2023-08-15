@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Map;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -16,6 +17,17 @@ public class TransferServlet extends HttpServlet {
 	// 建立翻譯服務物件
 	private TransferService transferService = new TransferService();
 	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Map<String, String> dict = transferService.findAll();
+		// (V) 建立分派器並指向指定 jsp (view)
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/dictlist.jsp");
+		// 建立要傳遞給 jsp 的資料
+		req.setAttribute("dict", dict);
+		// 傳遞
+		rd.forward(req, resp);
+	}
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		

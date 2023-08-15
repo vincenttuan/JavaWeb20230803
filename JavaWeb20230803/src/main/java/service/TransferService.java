@@ -1,5 +1,7 @@
 package service;
 
+import java.util.Map;
+
 import repository.TransferDao;
 
 // 翻譯服務
@@ -15,6 +17,10 @@ public class TransferService {
 		}
 		
 		return result;
+	}
+	
+	public Map<String, String> findAll() {
+		return transferDao.queryAll();
 	}
 	
 }
