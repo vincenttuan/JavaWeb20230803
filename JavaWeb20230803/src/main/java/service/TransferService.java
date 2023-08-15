@@ -1,21 +1,20 @@
 package service;
 
+import repository.TransferDao;
+
 // 翻譯服務
 public class TransferService {
 	
+	private TransferDao transferDao = new TransferDao();
+	
 	public String transfer(String word) {
 		
-		switch (word) {
-			case "book":
-				return "書";
-			case "pen":
-				return "筆";
-			case "apple":
-				return "蘋果";
-			default:
-				return "我不知道";
+		String result = transferDao.getByWord(word);
+		if(result == null) {
+			result = "我不知道";
 		}
 		
+		return result;
 	}
 	
 }
