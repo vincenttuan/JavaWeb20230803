@@ -18,6 +18,7 @@ public class UserDao {
 		users.add(new User(5, "anna", "3333", new Date()));
 	}
 	
+	// 查詢單筆
 	public User getUserByName(String name) {
 		return users.parallelStream()
 					.filter(user -> user.getUsername().equals(name))
@@ -25,5 +26,9 @@ public class UserDao {
 					.orElse(null);
 	}
 	
+	// 查詢多筆
+	public List<User> queryAllUser() {
+		return users;
+	}
 	
 }
