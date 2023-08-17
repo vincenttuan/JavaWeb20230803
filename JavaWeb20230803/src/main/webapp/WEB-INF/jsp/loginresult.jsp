@@ -3,6 +3,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+String username = (String)request.getAttribute("username");
+Boolean check = (Boolean)request.getAttribute("check");
+%>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -17,8 +21,8 @@
 				<form method="get" action="/JavaWeb20230803/servlet/login" class="pure-form">
 					<fieldset>
 						<legend>登入-結果</legend>
-						帳號: <%=request.getAttribute("username") %><p />
-						結果: <%=request.getAttribute("check") %><p />
+						帳號: <%=username %><p />
+						結果: <%=check %><p />
 						<button type="submit" class="pure-button pure-button-primary">回上一頁</button>	 
 					</fieldset>
 				</form>
@@ -39,7 +43,15 @@
 										<td><%=user.getId() %></td>
 										<td><%=user.getUsername() %></td>
 										<td><%=user.getBirthFormat() %></td>
-										<td><%=user.getAge() %></td>
+										<td>
+											<%
+												if(user.getUsername().equals(username)) {
+													out.print(user.getAge());
+												} else {
+													out.print("");
+												}
+											%>
+										</td>
 									</tr>
 								<% } %>
 							</tbody>
