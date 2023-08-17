@@ -38,8 +38,8 @@
 									<tr>
 										<td><%=user.getId() %></td>
 										<td><%=user.getUsername() %></td>
-										<td><%=user.getBirth() %></td>
-										<td></td>
+										<td><%=user.getBirthFormat() %></td>
+										<td><%=user.getAge() %></td>
 									</tr>
 								<% } %>
 							</tbody>

@@ -1,5 +1,7 @@
 package repository.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class User {
@@ -8,6 +10,8 @@ public class User {
 	private String username; // 帳號
 	private String password; // 密碼
 	private Date birth; // 生日
+	
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	
 	public User(Integer id, String username, String password, Date birth) {
 		this.id = id;
@@ -47,7 +51,21 @@ public class User {
 	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
-
+	
+	public String getBirthFormat() {
+		return sdf.format(birth);
+	}
+	
+	public int getAge() {
+		return getYear(new Date()) - getYear(birth);
+	}
+	
+	private int getYear(Date date) {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		return cal.get(Calendar.YEAR);
+	}
+	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", birth=" + birth + "]";
