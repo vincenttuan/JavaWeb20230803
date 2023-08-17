@@ -1,5 +1,29 @@
 package repository;
 
-public class UserDao {
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
+import repository.model.User;
+
+public class UserDao {
+	
+	// In-memory Database
+	private static List<User> users = new ArrayList<>();
+	static {
+		users.add(new User(1, "john", "1234", new Date()));
+		users.add(new User(2, "mary", "5678", new Date()));
+		users.add(new User(3, "jack", "1111", new Date()));
+		users.add(new User(4, "rose", "2222", new Date()));
+		users.add(new User(5, "anna", "3333", new Date()));
+	}
+	
+	public User getUserByName(String name) {
+		return users.parallelStream()
+					.filter(user -> user.getUsername().equals(name))
+					.findAny()
+					.orElse(null);
+	}
+	
+	
 }
