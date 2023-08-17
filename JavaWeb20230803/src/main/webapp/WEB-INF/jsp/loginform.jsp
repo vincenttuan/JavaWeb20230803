@@ -12,8 +12,8 @@
 		<form method="post" action="/JavaWeb20230803/servlet/login" class="pure-form">
 			<fieldset>
 				<legend>登入</legend>
-				帳號: <input type="text" id="username" name="username" placeholder="請輸入帳號"><p />
-				密碼: <input type="password" id="password" name="password" placeholder="請輸入密碼"><p />
+				帳號: <input type="text" id="username" name="username" placeholder="請輸入帳號" required><p />
+				密碼: <input type="password" id="password" name="password" placeholder="請輸入密碼" required><p />
 				<button type="reset" class="pure-button">清除</button>
 				<button type="submit" class="pure-button pure-button-primary">登入</button>	 
 			</fieldset>
