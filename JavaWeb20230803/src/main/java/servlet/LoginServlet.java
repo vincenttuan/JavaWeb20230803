@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 得到前端登入表單傳來的 username 與 password
-		String username = req.getParameter("usename");
+		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		
 		// 判斷登入使否成功 ?
