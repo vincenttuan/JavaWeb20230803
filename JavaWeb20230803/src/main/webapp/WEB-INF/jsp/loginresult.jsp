@@ -37,22 +37,24 @@ Boolean check = (Boolean)request.getAttribute("check");
 								<th>序號</th><th>帳號</th><th>生日</th><th>年齡</th>
 							</thead>
 							<tbody>
-								<% List<User> users = (List<User>)request.getAttribute("users"); %>
-								<% for(User user : users) { %>
-									<tr>
-										<td><%=user.getId() %></td>
-										<td><%=user.getUsername() %></td>
-										<td><%=user.getBirthFormat() %></td>
-										<td>
-											<%
-												if(user.getUsername().equals(username)) {
-													out.print(user.getAge());
-												} else {
-													out.print("");
-												}
-											%>
-										</td>
-									</tr>
+								<% if(check) { %>
+									<% List<User> users = (List<User>)request.getAttribute("users"); %>
+									<% for(User user : users) { %>
+										<tr>
+											<td><%=user.getId() %></td>
+											<td><%=user.getUsername() %></td>
+											<td><%=user.getBirthFormat() %></td>
+											<td>
+												<%
+													if(user.getUsername().equals(username)) {
+														out.print(user.getAge());
+													} else {
+														out.print("");
+													}
+												%>
+											</td>
+										</tr>
+									<% } %>
 								<% } %>
 							</tbody>
 						</table>
