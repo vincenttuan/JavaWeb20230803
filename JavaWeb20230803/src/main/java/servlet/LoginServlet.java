@@ -36,6 +36,7 @@ public class LoginServlet extends HttpServlet {
 		// 傳遞參數
 		req.setAttribute("username", username); // 登入者
 		req.setAttribute("check", check); // 是否登入成功 ?
+		req.setAttribute("users", userService.findAllUser()); // 得到所有 user 資料
 		rd.forward(req, resp);
 	}
 	
