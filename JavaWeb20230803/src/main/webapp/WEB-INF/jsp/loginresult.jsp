@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="repository.model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,14 +11,47 @@
 	</head>
 	<body style="padding: 15px">
 		
-		<form method="get" action="/JavaWeb20230803/servlet/login" class="pure-form">
-			<fieldset>
-				<legend>登入-結果</legend>
-				帳號: <%=request.getAttribute("username") %><p />
-				結果: <%=request.getAttribute("check") %><p />
-				<button type="submit" class="pure-button pure-button-primary">回上一頁</button>	 
-			</fieldset>
-		</form>
+		<table>
+			<td valign="top">
+				<!-- 登入結果 -->
+				<form method="get" action="/JavaWeb20230803/servlet/login" class="pure-form">
+					<fieldset>
+						<legend>登入-結果</legend>
+						帳號: <%=request.getAttribute("username") %><p />
+						結果: <%=request.getAttribute("check") %><p />
+						<button type="submit" class="pure-button pure-button-primary">回上一頁</button>	 
+					</fieldset>
+				</form>
+			</td>
+			<td valign="top">
+				<!-- User 列表 -->
+				<form class="pure-form">
+					<fieldset>
+						<legend>User 列表</legend>
+						<table class="pure-table pure-table-bordered">
+							<thead>
+								<th>序號</th><th>帳號</th><th>生日</th><th>年齡</th>
+							</thead>
+							<tbody>
+								<% List<User> users = (List<User>)request.getAttribute("users"); %>
+								<% for(User user : users) { %>
+									<tr>
+										<td><%=user.getId() %></td>
+										<td><%=user.getUsername() %></td>
+										<td><%=user.getBirth() %></td>
+										<td></td>
+									</tr>
+								<% } %>
+							</tbody>
+						</table>
+					</fieldset>
+				</form>
+			</td>
+		</table>
+		
+		
+		
+		
 		
 	</body>
 </html>
