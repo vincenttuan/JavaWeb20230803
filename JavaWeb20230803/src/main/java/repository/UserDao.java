@@ -11,6 +11,7 @@ public class UserDao {
 	
 	// In-memory Database
 	private static List<User> users = new ArrayList<>();
+	
 	static {
 		users.add(new User(1, "john", "1234", getBirth(1954, 12, 8)));
 		users.add(new User(2, "mary", "5678", getBirth(1973, 12, 18)));
