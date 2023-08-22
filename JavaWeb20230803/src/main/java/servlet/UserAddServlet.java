@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -24,8 +25,13 @@ public class UserAddServlet extends HttpServlet {
 		// 進入到新增服務程序
 		int rowcount = userService.add(username, password, birthStr);
 		
-		resp.getWriter().print(rowcount);
-		
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/userresult.jsp");
+		if(rowcount == 0) {
+			req.setAttribute("result", "新增失敗");
+		} else {
+			req.setAttribute("result", "新增成功");
+		}
+		rd.forward(req, resp);
 	}
 	
 }
