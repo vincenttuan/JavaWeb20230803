@@ -1,5 +1,9 @@
 package service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import repository.UserDao;
@@ -24,6 +28,24 @@ public class UserService {
 	// 取得所有 user
 	public List<User> findAllUser() {
 		return userDao.queryAllUser();
+	}
+	
+	// 新增
+	public int add(String username, String password, String birthStr) {
+		User user = new User();
+		user.setUsername(username);
+		user.setPassword(password);
+		// 將 birthStr 轉 Date
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			Date birth = sdf.parse(birthStr);
+			user.setBirth(birth);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		int rowcount = userDao.create(user);
+		return rowcount;
 	}
 	
 }

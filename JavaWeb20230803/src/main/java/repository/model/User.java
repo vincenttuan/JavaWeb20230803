@@ -13,6 +13,10 @@ public class User {
 	
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	
+	public User() {
+		
+	}
+	
 	public User(Integer id, String username, String password, Date birth) {
 		this.id = id;
 		this.username = username;
