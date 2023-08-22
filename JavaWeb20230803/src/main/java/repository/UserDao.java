@@ -22,7 +22,7 @@ public class UserDao {
 	
 	// 查詢單筆
 	public User getUserByName(String name) {
-		return users.parallelStream()
+		return queryAllUser().parallelStream()
 					.filter(user -> user.getUsername().equals(name))
 					.findAny()
 					.orElse(null);
