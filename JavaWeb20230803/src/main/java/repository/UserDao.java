@@ -67,6 +67,7 @@ public class UserDao {
 			
 			pstmt.setString(1, user.getUsername());
 			pstmt.setString(2, user.getPassword());
+			// java.util.Date 轉 java.sql.Date 的方法
 			pstmt.setDate(3, new java.sql.Date(user.getBirth().getTime()));
 			
 			int rowcount = pstmt.executeUpdate();
