@@ -27,6 +27,20 @@ Boolean check = (Boolean)request.getAttribute("check");
 					</fieldset>
 				</form>
 			</td>
+			
+			<td valign="top">
+				<!-- User 表單 -->
+				<form method="post" action="/JavaWeb20230803/servlet/user/add" class="pure-form">
+					<fieldset>
+						<legend>User 表單</legend>
+						帳號: <input type="text" id="username" name="username"><p />
+						密碼: <input type="text" id="password" name="password"><p />
+						生日: <input type="date" id="birth" name="birth"><p />
+						<button type="submit" class="pure-button pure-button-primary">新增</button>	 
+					</fieldset>
+				</form>
+			</td>
+			
 			<td valign="top">
 				<!-- User 列表 -->
 				<form class="pure-form">
