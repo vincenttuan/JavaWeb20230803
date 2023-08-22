@@ -29,4 +29,19 @@ public class MySQL {
 		return _instance;
 	}
 	
+	// 取得資料庫連線
+	public Connection getConnection() {
+		return conn;
+	}
+	
+	// 關閉資料庫連線
+	public void closeConnection() {
+		try {
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 }
