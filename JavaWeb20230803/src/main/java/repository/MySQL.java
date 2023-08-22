@@ -1,6 +1,7 @@
 package repository;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 
 // 利用 SingleTon 模式
 public class MySQL {
@@ -15,6 +16,9 @@ public class MySQL {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			// 2.建立 mysql 連線
 			String dbUrl = "jdbc:mysql://localhost:3306/web?zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Taipei&characterEncoding=utf-8&useUnicode=true";
+			String username = "root";
+			String password = "12345678";
+			conn = DriverManager.getConnection(dbUrl, username, password);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
