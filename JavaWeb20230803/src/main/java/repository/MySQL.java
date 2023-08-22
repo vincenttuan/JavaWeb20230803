@@ -34,14 +34,5 @@ public class MySQL {
 		return conn;
 	}
 	
-	// 關閉資料庫連線
-	public void closeConnection() {
-		try {
-			conn.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
 	
 }
