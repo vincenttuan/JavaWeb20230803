@@ -1,5 +1,6 @@
 package repository;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -55,6 +56,26 @@ public class UserDao {
 		}
 		
 		return users;
+	}
+	
+	// 新增
+	public int create(User user) {
+		// 取得 MySQL 物件
+		MySQL mysql = MySQL.getInstance();
+		String sql = "insert into users(username, password, birth) values(?, ?, ?)";
+		try(PreparedStatement pstmt = mysql.getConnection().prepareStatement(sql)) {
+			
+			pstmt.setString(1, user.getUsername());
+			pstmt.setString(2, user.getPassword());
+			pstmt.setDate(3, new java.sql.Date(user.getBirth().getTime()));
+			
+			int rowcount = pstmt.executeUpdate();
+			return rowcount;
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 	
 }
