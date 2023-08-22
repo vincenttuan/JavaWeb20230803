@@ -31,9 +31,11 @@ public class UserDao {
 	// 查詢多筆
 	public List<User> queryAllUser() {
 		List<User> users = new ArrayList();
-		
+		// 取得 MySQL 物件
+		MySQL mysql = MySQL.getInstance();
+		// 進行資料庫連線作業
 		String sql = "select id, username, password, birth from users";
-		try(Statement stmt = MySQL.getInstance().getConnection().createStatement();
+		try(Statement stmt = mysql.getConnection().createStatement();
 			ResultSet rs = stmt.executeQuery(sql)) {
 			
 			while (rs.next()) { // 將資料列逐筆取出 
