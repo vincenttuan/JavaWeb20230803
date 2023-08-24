@@ -54,7 +54,7 @@ public class ExamServlet extends HttpServlet {
 		// 4. 重導到 examresult.jsp
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/examresult.jsp");
 		req.setAttribute("action", "新增");
-		req.setAttribute("rowcount", rowcount);
+		req.setAttribute("result", rowcount);
 		rd.forward(req, resp);
 		
 	}
