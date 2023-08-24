@@ -4,14 +4,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import service.ExamService;
 
 @WebServlet("/servlet/exam")
 public class ExamServlet extends HttpServlet {
+	
+	private ExamService examService = new ExamService();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -35,7 +39,7 @@ public class ExamServlet extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		
 		// 2. 取得參數
-		String name = req.getParameter("name");
+		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		String examNo = req.getParameter("examNo");
 		String examFee = req.getParameter("examFee");
@@ -44,17 +48,15 @@ public class ExamServlet extends HttpServlet {
 		String[] examPeriods = req.getParameterValues("examPeriod");
 		String memo = req.getParameter("memo");
 		
-		// 3. 回應內容
-		out.print(String.format("姓名: %s <p>", name));
-		out.print(String.format("密碼: %s <p>", password));
-		out.print(String.format("代號: %s <p>", examNo));
-		out.print(String.format("費用: %s <p>", examFee));
-		out.print(String.format("繳費: %s <p>", paid));
-		out.print(String.format("日期: %s <p>", examDate));
-		out.print(String.format("時段: %s <p>", Arrays.toString(examPeriods)));
-		out.print(String.format("備註: %s <p>", memo));
+		// 3. 傳給 examService 進行資料新增
+		int rowcount = examService.add(username, password, examNo, examFee, paid, examDate, examPeriods, memo);
 		
-		out.print("<button type='button' onclick='history.back()' >回上一頁</button>");
+		// 4. 重導到 examresult.jsp
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/examresult.jsp");
+		req.setAttribute("action", "新增");
+		req.setAttribute("rowcount", rowcount);
+		rd.forward(req, resp);
+		
 	}
 	
 	
