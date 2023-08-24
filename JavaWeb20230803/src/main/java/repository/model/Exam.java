@@ -8,11 +8,11 @@ public class Exam {
 	private String password;
 	private String examNo;
 	private Integer examFee;
-	private Boolean paid;
+	private Boolean paid = false;
 	private Date examDate;
-	private Boolean examPeriod1;
-	private Boolean examPeriod2;
-	private Boolean examPeriod3;
+	private Boolean examPeriod1 = false;
+	private Boolean examPeriod2 = false;
+	private Boolean examPeriod3 = false;
 	private String memo;
 	
 	public Integer getId() {
