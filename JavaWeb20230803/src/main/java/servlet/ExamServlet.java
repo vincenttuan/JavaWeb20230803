@@ -23,9 +23,11 @@ public class ExamServlet extends HttpServlet {
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html;charset=UTF-8"); // 給瀏覽器看的
 		
-		// 設定回應物件
-		PrintWriter out = resp.getWriter();
-		out.println("請按下此 <a href='/JavaWeb20230803/html/examform.html'>連結</a> 進入到考試註冊頁面");
+		// 重導到查詢頁
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/examview.jsp");
+		req.setAttribute("exams", examService.queryAll());
+		rd.forward(req, resp);
+		
 	}
 
 	@Override
