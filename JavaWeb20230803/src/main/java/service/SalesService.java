@@ -32,4 +32,11 @@ public class SalesService {
 									summingInt(sales -> sales.getPrice() * sales.getQty())));
 	}
 	
+	// 根據產品(product)印出每一種產品的銷售金額
+	public Map<String, Integer> getProductSales() {
+		return salesDao.queryAll().stream()
+				.collect(groupingBy(Sales::getProduct, 
+									summingInt(sales -> sales.getPrice() * sales.getQty())));
+	}
+	
 }
