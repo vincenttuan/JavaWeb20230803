@@ -49,6 +49,16 @@
 				<form class="pure-form">
 					<fieldset>
 						<legend>Sales Analysis</legend>
+						分析項目: 
+							<input type="radio" id="item" name="item" value="1"> 根據地區印出每區的銷售金額<br>
+							<input type="radio" id="item" name="item" value="2"> 根據產品印出每一種產品的銷售金額<br>
+							<input type="radio" id="item" name="item" value="3"> 根據分店印出每一家的銷售金額<br>
+						選擇圖型:
+							<input type="radio" id="chart" name="chart" value="1"> 直方圖
+							<input type="radio" id="chart" name="chart" value="2"> 長條圖
+							<input type="radio" id="chart" name="chart" value="3"> 圓餅圖
+							<input type="radio" id="chart" name="chart" value="4"> 折線圖
+						<br>	
 						<table class="pure-table pure-table-bordered">
 							<thead>
 								<th>項目</th><th>銷售額</th>
