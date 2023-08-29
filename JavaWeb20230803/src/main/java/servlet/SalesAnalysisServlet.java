@@ -19,12 +19,12 @@ public class SalesAnalysisServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Map<String, Integer> branchSales = salesService.getBranchSales();
+		Map<String, Integer> salesMap = salesService.getBranchSales();
 		
 		// 重導到 sales.jsp
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/salesanalysis.jsp");
 		// 傳遞參數
-		req.setAttribute("branchSales", branchSales);
+		req.setAttribute("salesMap", salesMap);
 		rd.forward(req, resp);
 		
 	}

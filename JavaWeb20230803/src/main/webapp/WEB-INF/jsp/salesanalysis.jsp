@@ -6,7 +6,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <% 
-	Map<String, Integer> branchSales = (Map<String, Integer>)request.getAttribute("branchSales");
+	Map<String, Integer> salesMap = (Map<String, Integer>)request.getAttribute("salesMap");
 %>
 <html>
 	<head>
@@ -24,7 +24,7 @@
 						<th>分店</th><th>銷售額</th>
 					</thead>
 					<tbody>
-						<% for(Entry<String, Integer> map : branchSales.entrySet()) { %>
+						<% for(Entry<String, Integer> map : salesMap.entrySet()) { %>
 							<tr>
 								<td><%=map.getKey() %></td>
 								<td><%=map.getValue() %></td>
