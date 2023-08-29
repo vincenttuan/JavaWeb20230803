@@ -75,8 +75,5 @@
 			</td>
 		</table>
 		
-		
-		
-		
 	</body>
 </html>
