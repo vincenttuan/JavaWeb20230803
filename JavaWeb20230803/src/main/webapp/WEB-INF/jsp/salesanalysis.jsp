@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <% 
 	Map<String, Integer> salesMap = (Map<String, Integer>)request.getAttribute("salesMap");
+	String chartName = request.getAttribute("chartName") + "";
 %>
 <html>
 	<head>
@@ -32,11 +33,8 @@
 	          title: 'Sales Analysis', is3D: true
 	        };
 	
-	        //var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-	        //var chart = new google.visualization.BarChart(document.getElementById('piechart'));
-	        var chart = new google.visualization.ColumnChart(document.getElementById('piechart'));
-	        //var chart = new google.visualization.LineChart(document.getElementById('piechart'));
-	    	
+	        var chart = new google.visualization.<%=chartName.trim() %>Chart(document.getElementById('piechart'));
+	        
 	        chart.draw(data, options);
 	      }
 	    </script>
@@ -50,14 +48,14 @@
 					<fieldset>
 						<legend>Sales Analysis</legend>
 						分析項目: <br>
-							<input type="radio" id="item" name="item" value="1" checked> 根據地區印出每區的銷售金額<br>
-							<input type="radio" id="item" name="item" value="2"> 根據產品印出每一種產品的銷售金額<br>
-							<input type="radio" id="item" name="item" value="3"> 根據分店印出每一家的銷售金額<p>
+							<input type="radio" id="itemName" name="itemName" value="1" checked> 根據地區印出每區的銷售金額<br>
+							<input type="radio" id="itemName" name="itemName" value="2"> 根據產品印出每一種產品的銷售金額<br>
+							<input type="radio" id="itemName" name="itemName" value="3"> 根據分店印出每一家的銷售金額<p>
 						選擇圖型: <br>
-							<input type="radio" id="chart" name="chart" value="1" checked> 直方圖
-							<input type="radio" id="chart" name="chart" value="2"> 長條圖
-							<input type="radio" id="chart" name="chart" value="3"> 圓餅圖
-							<input type="radio" id="chart" name="chart" value="4"> 折線圖
+							<input type="radio" id="chartName" name="chartName" value="Column" checked> 直方圖
+							<input type="radio" id="chartName" name="chartName" value="Bar"> 長條圖
+							<input type="radio" id="chartName" name="chartName" value="Pie"> 圓餅圖
+							<input type="radio" id="chartName" name="chartName" value="Line"> 折線圖
 						<br>
 						<button type="submit" class="pure-button pure-button-primary">傳送</button>
 						<br>
