@@ -12,7 +12,7 @@
 		<form class="pure-form">
 			<fieldset>
 				<legend>Sales List</legend>
-					 
+				${ salesList }	 
 			</fieldset>
 		</form>
 		
