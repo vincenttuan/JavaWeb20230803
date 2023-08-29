@@ -17,7 +17,7 @@
 	<body style="padding: 15px">
 		
 		<table>
-			<td>
+			<td valign="top">
 				<form class="pure-form">
 					<fieldset>
 						<legend>Sales Analysis</legend>
@@ -37,7 +37,7 @@
 					</fieldset>
 				</form>
 			</td>
-			<td>
+			<td valign="top">
 				<form class="pure-form">
 					<fieldset>
 						<legend>Sales Chart</legend>
