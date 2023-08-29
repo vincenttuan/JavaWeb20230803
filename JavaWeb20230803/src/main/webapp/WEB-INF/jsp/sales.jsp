@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <% 
-	List<Sales> salesList = (List<Sales>)request.getAttribute("saleList");
+	List<Sales> salesList = (List<Sales>)request.getAttribute("salesList");
 %>
 <html>
 	<head>
