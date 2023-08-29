@@ -25,4 +25,11 @@ public class SalesService {
 									summingInt(sales -> sales.getPrice() * sales.getQty())));
 	}
 	
+	// 根據地區(city)印出每區的銷售金額
+	public Map<String, Integer> getCitySales() {
+		return salesDao.queryAll().stream()
+				.collect(groupingBy(Sales::getCity, 
+									summingInt(sales -> sales.getPrice() * sales.getQty())));
+	}
+	
 }
