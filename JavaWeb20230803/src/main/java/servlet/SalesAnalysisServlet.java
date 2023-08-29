@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -18,12 +19,12 @@ public class SalesAnalysisServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<Sales> salesList = salesService.findAll();
+		Map<String, Integer> branchSales = salesService.getBranchSales();
 		
 		// 重導到 sales.jsp
-		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/sales.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/salesanalysis.jsp");
 		// 傳遞參數
-		req.setAttribute("salesList", salesList);
+		req.setAttribute("branchSales", branchSales);
 		rd.forward(req, resp);
 		
 	}
