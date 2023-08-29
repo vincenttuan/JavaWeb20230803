@@ -1,9 +1,14 @@
 package service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.summingInt;
 
 import repository.SalesDao;
 import repository.model.Sales;
+
 
 public class SalesService {
 	private SalesDao salesDao = new SalesDao();
@@ -13,5 +18,11 @@ public class SalesService {
 		return salesDao.queryAll();
 	}
 	
+	// 根據分店印出每一家的銷售金額
+	public Map<String, Integer> getBranchSales() {
+		return salesDao.queryAll().stream()
+				.collect(groupingBy(Sales::getBranch, 
+									summingInt(sales -> sales.getPrice() * sales.getQty())));
+	}
 	
 }
