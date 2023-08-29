@@ -29,7 +29,7 @@
 	        ]);
 	
 	        var options = {
-	          title: 'Sales Analysis'
+	          title: 'Sales Analysis', is3D: true
 	        };
 	
 	        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
