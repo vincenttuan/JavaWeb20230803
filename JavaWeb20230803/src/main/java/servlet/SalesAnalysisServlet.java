@@ -19,14 +19,30 @@ public class SalesAnalysisServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//Map<String, Integer> salesMap = salesService.getBranchSales();
-		Map<String, Integer> salesMap = salesService.getCitySales();
-		//Map<String, Integer> salesMap = salesService.getProductSales();
+		String itemName = req.getParameter("itemName");
+		String chartName = req.getParameter("chartName");
+		if(itemName == null) itemName = "1";
+		if(chartName == null) chartName = "Column";
+		
+		Map<String, Integer> salesMap = null;
+		switch (itemName) {
+			default:
+			case "1":
+				salesMap = salesService.getCitySales();
+				break;
+			case "2":
+				salesMap = salesService.getProductSales();
+				break;
+			case "3":
+				salesMap = salesService.getBranchSales();
+				break;	
+		}
 		
 		// 重導到 sales.jsp
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/salesanalysis.jsp");
 		// 傳遞參數
 		req.setAttribute("salesMap", salesMap);
+		req.setAttribute("chartName", chartName);
 		rd.forward(req, resp);
 		
 	}
