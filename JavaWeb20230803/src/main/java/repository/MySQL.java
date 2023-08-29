@@ -33,6 +33,7 @@ public class MySQL {
 	// 取得資料庫連線
 	public Connection getConnection() {
 		try {
+			// 檢查是否連線已經關閉, 若有關閉就重新建立連線
 			if(conn.isClosed()) {
 				conn = DriverManager.getConnection(dbUrl, username, password);
 			}
