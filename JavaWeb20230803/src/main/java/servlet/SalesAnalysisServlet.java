@@ -42,6 +42,7 @@ public class SalesAnalysisServlet extends HttpServlet {
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/salesanalysis.jsp");
 		// 傳遞參數
 		req.setAttribute("salesMap", salesMap);
+		req.setAttribute("itemName", itemName);
 		req.setAttribute("chartName", chartName);
 		rd.forward(req, resp);
 		
