@@ -16,25 +16,40 @@
 	</head>
 	<body style="padding: 15px">
 		
-		<form class="pure-form">
-			<fieldset>
-				<legend>Sales Analysis</legend>
-				<table class="pure-table pure-table-bordered">
-					<thead>
-						<th>項目</th><th>銷售額</th>
-					</thead>
-					<tbody>
-						<% for(Entry<String, Integer> map : salesMap.entrySet()) { %>
-							<tr>
-								<td><%=map.getKey() %></td>
-								<td><%=map.getValue() %></td>
-							</tr>
-						<% } %>		
-					</tbody>
-				</table>
-					 
-			</fieldset>
-		</form>
+		<table>
+			<td>
+				<form class="pure-form">
+					<fieldset>
+						<legend>Sales Analysis</legend>
+						<table class="pure-table pure-table-bordered">
+							<thead>
+								<th>項目</th><th>銷售額</th>
+							</thead>
+							<tbody>
+								<% for(Entry<String, Integer> map : salesMap.entrySet()) { %>
+									<tr>
+										<td><%=map.getKey() %></td>
+										<td><%=map.getValue() %></td>
+									</tr>
+								<% } %>		
+							</tbody>
+						</table>
+					</fieldset>
+				</form>
+			</td>
+			<td>
+				<form class="pure-form">
+					<fieldset>
+						<legend>Sales Chart</legend>
+						
+					</fieldset>
+				</form>	
+			
+			</td>
+		</table>
+		
+		
+		
 		
 	</body>
 </html>
