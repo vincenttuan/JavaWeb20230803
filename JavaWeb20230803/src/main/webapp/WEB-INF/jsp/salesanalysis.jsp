@@ -21,7 +21,7 @@
 				<legend>Sales Analysis</legend>
 				<table class="pure-table pure-table-bordered">
 					<thead>
-						<th>分店</th><th>銷售額</th>
+						<th>項目</th><th>銷售額</th>
 					</thead>
 					<tbody>
 						<% for(Entry<String, Integer> map : salesMap.entrySet()) { %>
