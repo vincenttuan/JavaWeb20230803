@@ -29,7 +29,7 @@
 	        ]);
 	
 	        var options = {
-	          title: 'My Daily Activities'
+	          title: 'Sales Analysis'
 	        };
 	
 	        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
