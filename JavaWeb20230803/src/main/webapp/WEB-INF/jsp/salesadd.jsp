@@ -19,14 +19,14 @@
 		<form class="pure-form" method="post" action="${pageContext.request.contextPath}/servlet/sales/add">
 			<fieldset>
 				<legend>Sales Add</legend>
-				日期: <input type="date" id="date" name="date"><p />
+				日期: <input type="date" id="date" name="date" required><p />
 				商品: <select id="product" name="product">
 						<% for(String product : products) { %>
 							<option value="<%=product %>"><%=product %></option>
 						<% } %>
 					 </select><p />
-				價格: <input type="number" id="price" name="price"><p />
-				數量: <input type="number" id="qty" name="qty"><p />
+				價格: <input type="number" id="price" name="price" required><p />
+				數量: <input type="number" id="qty" name="qty" required><p />
 				城市: 
 					<select id="city" name="city">
 						<% for(String city : cities) { %>
