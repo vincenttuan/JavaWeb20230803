@@ -53,7 +53,7 @@ public class SalesDao {
 	
 	// 新增
 	public int create(Sales sales) {
-		String sql = "insert into sales(date, product, price, qty, city, branch) values(?, ?, ?, ?, ?, ?)";
+		String sql = "insert into sales_data(date, product, price, qty, city, branch) values(?, ?, ?, ?, ?, ?)";
 		int rowcount = 0;
 		try(PreparedStatement pstmt = conn.prepareStatement(sql);) {
 			pstmt.setString(1, sales.getDate());
