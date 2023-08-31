@@ -19,11 +19,12 @@
 				<legend>Sales List</legend>
 				<table class="pure-table pure-table-bordered">
 					<thead>
-						<th>日期</th><th>商品</th><th>價格</th><th>數量</th><th>城市</th><th>分店</th>
+						<th>序號</th><th>日期</th><th>商品</th><th>價格</th><th>數量</th><th>城市</th><th>分店</th>
 					</thead>
 					<tbody>
 						<% for(Sales sales : salesList) { %>
 							<tr>
+								<td><%=sales.getId() %></td>
 								<td><%=sales.getDate() %></td>
 								<td><%=sales.getProduct() %></td>
 								<td><%=sales.getPrice() %></td>
