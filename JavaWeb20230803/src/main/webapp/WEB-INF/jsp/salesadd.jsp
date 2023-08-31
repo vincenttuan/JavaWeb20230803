@@ -38,7 +38,7 @@
 						<option value="高雄">高雄</option>
 					</select><p />
 				分店: 
-					<select id="branch" name="branch">
+					<select id="branch" name="branch" onchange="this.value==''?branch_newname.style.display='':branch_newname.style.display='none';">
 						<option value="">請選擇</option>
 					    <option value="信義分店">信義分店</option>
 					    <option value="大安分店">大安分店</option>
