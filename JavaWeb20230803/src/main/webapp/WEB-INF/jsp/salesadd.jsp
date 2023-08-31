@@ -39,6 +39,7 @@
 					</select><p />
 				分店: 
 					<select id="branch" name="branch">
+						<option value="">請選擇</option>
 					    <option value="信義分店">信義分店</option>
 					    <option value="大安分店">大安分店</option>
 					    <option value="左營分店">左營分店</option>
@@ -86,7 +87,8 @@
 					    <option value="仁德分店">仁德分店</option>
 					    <option value="旗津分店">旗津分店</option>
 					</select>
-					
+					<!-- 自訂新的分店名 -->
+					<input type="text" id="branch_newname" name="branch_newname" title="自訂新的分店名">
 				<p />
 				<button type="reset" class="pure-button">重置</button>
 				<button type="submit" class="pure-button pure-button-primary">新增</button>
