@@ -26,10 +26,20 @@
 						<option value="拿鐵">拿鐵</option>
 						<option value="熱可可">熱可可</option>
 					 </select><p />
-				價格: <input type="date" id="date" name="date"><p />
-				數量: <input type="date" id="date" name="date"><p />
-				城市: <input type="date" id="date" name="date"><p />
-				分店: <input type="date" id="date" name="date"><p />
+				價格: <input type="number" id="price" name="price"><p />
+				數量: <input type="number" id="qty" name="qty"><p />
+				城市: 
+					<select id="product" name="product">
+						<option value="台北">台北</option>
+						<option value="桃園">桃園</option>
+						<option value="新竹">新竹</option>
+						<option value="台中">台中</option>
+						<option value="台南">台南</option>
+						<option value="高雄">高雄</option>
+					</select><p />
+				分店: <input type="text" id="branch" name="branch" value="桃園分店"><p />
+				<button type="reset" class="pure-button">重置</button>
+				<button type="submit" class="pure-button pure-button-primary">新增</button>
 			</fieldset>
 		</form>
 		
