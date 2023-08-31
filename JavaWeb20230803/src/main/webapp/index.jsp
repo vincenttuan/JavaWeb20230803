@@ -54,6 +54,7 @@
 				<ol>
 					<li><a href="./servlet/sales/analysis">SalesAnalysisServlet 分析</a></li>
 					<li><a href="./servlet/sales">SalesServlet 查詢</a></li>
+					<li><a href="./servlet/sales/add">SalesAddServlet 新增</a></li>
 				</ol>
 			</fieldset>
 		</form>
