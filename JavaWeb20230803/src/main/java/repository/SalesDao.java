@@ -1,6 +1,7 @@
 package repository;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,15 +11,20 @@ import java.util.List;
 import repository.model.Sales;
 
 public class SalesDao {
+	private Connection conn;
+	
+	public SalesDao() {
+		MySQL mySQL = MySQL.getInstance();
+		conn = mySQL.getConnection();
+	}
 	
 	// 查詢所有資料
 	public List<Sales> queryAll() {
 		// 收集所有 sales_data 資料的容器
 		List<Sales> salesList = new ArrayList<>();
-		MySQL mySQL = MySQL.getInstance();
+		
 		String sql = "select id, date, product, price, qty, city, branch from sales_data";
-		try(Connection conn = mySQL.getConnection();
-			Statement stmt = conn.createStatement();
+		try(Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);) {
 			
 			// 將資料逐筆抓出並加入到 salesList 中
@@ -45,4 +51,21 @@ public class SalesDao {
 		return salesList;
 	}
 	
+	public int create(Sales sales) {
+		String sql = "insert into sales(date, product, price, qty, city, branch) values(?, ?, ?, ?, ?, ?)";
+		int rowcount = 0;
+		try(PreparedStatement pstmt = conn.prepareStatement(sql);) {
+			pstmt.setString(1, sales.getDate());
+			pstmt.setString(2, sales.getProduct());
+			pstmt.setInt(3, sales.getPrice());
+			pstmt.setInt(4, sales.getQty());
+			pstmt.setString(5, sales.getCity());
+			pstmt.setString(6, sales.getBranch());
+			rowcount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rowcount;
+	}
 }
+
