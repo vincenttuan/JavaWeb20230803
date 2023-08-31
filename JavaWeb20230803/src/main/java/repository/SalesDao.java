@@ -51,6 +51,7 @@ public class SalesDao {
 		return salesList;
 	}
 	
+	// 新增
 	public int create(Sales sales) {
 		String sql = "insert into sales(date, product, price, qty, city, branch) values(?, ?, ?, ?, ?, ?)";
 		int rowcount = 0;
