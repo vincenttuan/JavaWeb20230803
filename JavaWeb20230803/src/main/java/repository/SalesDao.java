@@ -16,7 +16,7 @@ public class SalesDao {
 		// 收集所有 sales_data 資料的容器
 		List<Sales> salesList = new ArrayList<>();
 		MySQL mySQL = MySQL.getInstance();
-		String sql = "select date, product, price, qty, city, branch from sales_data";
+		String sql = "select id, date, product, price, qty, city, branch from sales_data";
 		try(Connection conn = mySQL.getConnection();
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);) {
@@ -24,6 +24,7 @@ public class SalesDao {
 			// 將資料逐筆抓出並加入到 salesList 中
 			while (rs.next()) {
 				Sales sales = new Sales();
+				sales.setId(rs.getInt("id"));
 				sales.setDate(rs.getString("date"));
 				sales.setProduct(rs.getString("product"));
 				sales.setPrice(rs.getInt("price"));
