@@ -29,7 +29,7 @@
 				價格: <input type="number" id="price" name="price"><p />
 				數量: <input type="number" id="qty" name="qty"><p />
 				城市: 
-					<select id="product" name="product">
+					<select id="city" name="city">
 						<option value="台北">台北</option>
 						<option value="桃園">桃園</option>
 						<option value="新竹">新竹</option>
