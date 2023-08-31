@@ -18,6 +18,24 @@ public class SalesDao {
 		conn = mySQL.getConnection();
 	}
 	
+	// 查詢所有 product
+	public List<String> queryAllProduct() {
+		List<String> products = new ArrayList<>();
+		String sql = "select distinct product from sales_data";
+		try(Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);) {
+			
+			while (rs.next()) {
+				products.add(rs.getString("product"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return products;
+	}
+	
 	// 查詢所有資料
 	public List<Sales> queryAll() {
 		// 收集所有 sales_data 資料的容器
