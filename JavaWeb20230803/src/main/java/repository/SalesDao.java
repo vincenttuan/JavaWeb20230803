@@ -18,6 +18,42 @@ public class SalesDao {
 		conn = mySQL.getConnection();
 	}
 	
+	// 查詢所有 branch
+	public List<String> queryAllBranch() {
+		List<String> branches = new ArrayList<>();
+		String sql = "select distinct branch from sales_data";
+		try(Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);) {
+			
+			while (rs.next()) {
+				branches.add(rs.getString("branch"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return branches;
+	}
+	
+	// 查詢所有 city
+	public List<String> queryAllCity() {
+		List<String> cities = new ArrayList<>();
+		String sql = "select distinct city from sales_data";
+		try(Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);) {
+			
+			while (rs.next()) {
+				cities.add(rs.getString("city"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cities;
+	}
+	
 	// 查詢所有 product
 	public List<String> queryAllProduct() {
 		List<String> products = new ArrayList<>();

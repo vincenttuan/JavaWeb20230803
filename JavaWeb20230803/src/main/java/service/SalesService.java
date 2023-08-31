@@ -14,8 +14,16 @@ public class SalesService {
 	private SalesDao salesDao = new SalesDao();
 	
 	// 查詢所有 product
-	public List<String> findAllProduct() {
-		return salesDao.queryAllProduct();
+	public List<String> findAllItems(String itemName) {
+		switch (itemName) {
+			case "product":
+				return salesDao.queryAllProduct();
+			case "city":
+				return salesDao.queryAllCity();
+			case "branch":
+				return salesDao.queryAllBranch();
+		}
+		return null;
 	}
 	
 	// 查詢全部資料
