@@ -11,7 +11,7 @@
 	</head>
 	<body style="padding: 15px">
 		
-		<form class="pure-form">
+		<form class="pure-form" method="post" action="${pageContext.request.contextPath}/servlet/sales/add">
 			<fieldset>
 				<legend>Sales Add</legend>
 				日期: <input type="date" id="date" name="date"><p />
