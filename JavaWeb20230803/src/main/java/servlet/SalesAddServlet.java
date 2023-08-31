@@ -8,10 +8,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import service.SalesService;
 
 @WebServlet(value = "/servlet/sales/add")
 public class SalesAddServlet extends HttpServlet {
-
+	
+	private SalesService salesService = new SalesService();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/salesadd.jsp");
@@ -20,6 +23,24 @@ public class SalesAddServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setCharacterEncoding("utf-8");
+		String date = req.getParameter("date");
+		String product = req.getParameter("product");
+		String price = req.getParameter("price");
+		String qty = req.getParameter("qty");
+		String city = req.getParameter("city");
+		String branch = req.getParameter("branch");
+		String branch_newname = req.getParameter("branch_newname");
+		if(branch.equals("")) {
+			branch = branch_newname;
+		}
+		int rowcount = salesService.add(date, product, price, qty, city, branch);
+		
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/salessuccess.jsp");
+		req.setAttribute("action", "新增");
+		req.setAttribute("rowcount", rowcount);
+		rd.forward(req, resp);
 		
 	}
 	
