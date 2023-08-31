@@ -3,6 +3,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+	List<String> products = (List<String>)request.getAttribute("products"); // 所有 product
+%>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -16,15 +19,9 @@
 				<legend>Sales Add</legend>
 				日期: <input type="date" id="date" name="date"><p />
 				商品: <select id="product" name="product">
-						<option value="紅茶">紅茶</option>
-						<option value="咖啡">咖啡</option>
-						<option value="冰沙">冰沙</option>
-						<option value="綠茶">綠茶</option>
-						<option value="珍珠奶茶">珍珠奶茶</option>
-						<option value="冰淇淋">冰淇淋</option>
-						<option value="果汁">果汁</option>
-						<option value="拿鐵">拿鐵</option>
-						<option value="熱可可">熱可可</option>
+						<% for(String product : products) { %>
+							<option value="<%=product %>"><%=product %></option>
+						<% } %>
 					 </select><p />
 				價格: <input type="number" id="price" name="price"><p />
 				數量: <input type="number" id="qty" name="qty"><p />
