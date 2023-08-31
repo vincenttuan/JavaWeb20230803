@@ -1,6 +1,7 @@
 package repository.model;
 
 public class Sales {
+	private Integer id;
 	private String date;
 	private String product;
 	private Integer price;
@@ -19,6 +20,14 @@ public class Sales {
 		this.qty = qty;
 		this.city = city;
 		this.branch = branch;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getDate() {
@@ -71,9 +80,10 @@ public class Sales {
 
 	@Override
 	public String toString() {
-		return "Sales [date=" + date + ", product=" + product + ", price=" + price + ", qty=" + qty + ", city=" + city
-				+ ", branch=" + branch + "]";
+		return "Sales [id=" + id + ", date=" + date + ", product=" + product + ", price=" + price + ", qty=" + qty
+				+ ", city=" + city + ", branch=" + branch + "]";
 	}
+
 	
 	
 }
