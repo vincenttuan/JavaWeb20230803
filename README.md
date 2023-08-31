@@ -53,4 +53,7 @@ insert into exams(username, password, exam_no, exam_fee, paid, exam_date,
 # 資料查詢
 select * from exams;
 
+# sales_data 資料表加入 id 欄位
+ALTER TABLE sales_data
+ADD id INT NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;
 
