@@ -37,7 +37,7 @@ public class SalesAddServlet extends HttpServlet {
 		}
 		int rowcount = salesService.add(date, product, price, qty, city, branch);
 		
-		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/salessuccess.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/salesresponse.jsp");
 		req.setAttribute("action", "新增");
 		req.setAttribute("rowcount", rowcount);
 		rd.forward(req, resp);
