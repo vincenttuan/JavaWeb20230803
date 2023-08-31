@@ -18,6 +18,20 @@ public class SalesService {
 		return salesDao.queryAll();
 	}
 	
+	// 新增
+	public int add(String date, String product, String price, String qty, String city, String branch) {
+		// 建立 Sales
+		Sales sales = new Sales();
+		sales.setDate(date);
+		sales.setProduct(product);
+		sales.setPrice(Integer.parseInt(price));
+		sales.setQty(Integer.parseInt(qty));
+		sales.setCity(city);
+		sales.setBranch(branch);
+		int rowcount = salesDao.create(sales);
+		return rowcount;
+	}
+	
 	// 根據分店印出每一家的銷售金額
 	public Map<String, Integer> getBranchSales() {
 		return salesDao.queryAll().stream()
