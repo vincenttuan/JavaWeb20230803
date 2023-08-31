@@ -14,12 +14,22 @@
 		<form class="pure-form">
 			<fieldset>
 				<legend>Sales Add</legend>
-				日期
-				商品
-				價格
-				數量
-				城市
-				分店 
+				日期: <input type="date" id="date" name="date"><p />
+				商品: <select id="product" name="product">
+						<option value="紅茶">紅茶</option>
+						<option value="咖啡">咖啡</option>
+						<option value="冰沙">冰沙</option>
+						<option value="綠茶">綠茶</option>
+						<option value="珍珠奶茶">珍珠奶茶</option>
+						<option value="冰淇淋">冰淇淋</option>
+						<option value="果汁">果汁</option>
+						<option value="拿鐵">拿鐵</option>
+						<option value="熱可可">熱可可</option>
+					 </select><p />
+				價格: <input type="date" id="date" name="date"><p />
+				數量: <input type="date" id="date" name="date"><p />
+				城市: <input type="date" id="date" name="date"><p />
+				分店: <input type="date" id="date" name="date"><p />
 			</fieldset>
 		</form>
 		
