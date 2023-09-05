@@ -3,6 +3,20 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>找零錢計算機</title>
+		<script type="text/javascript">
+			function calculateChange() {
+				// 得到總金額的數字
+				var totalAmount = document.getElementById('totalAmount').value;
+				// 得到購買價的數字
+				var purchasePrice = document.getElementById('purchasePrice').value;
+				// 找錢
+				var change = totalAmount - purchasePrice;
+				
+				var resultDiv = document.getElementById('result');
+				resultDiv.innerHTML = '找零總金額: ' + change + ' 元';
+			}	
+		
+		</script>
 	</head>
 	<body>
 		<h2>找零錢計算機</h2>
