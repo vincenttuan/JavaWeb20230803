@@ -1,8 +1,27 @@
+<%@page import="java.text.ParseException"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="repository.model.Sales"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%!
+	// 在 jsp 中自訂一個方法
+	String getStringDate(String inputDate) {
+		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy/M/d");
+		SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
+	    try {
+	        Date date = inputFormat.parse(inputDate);
+	        String formattedDate = outputFormat.format(date);
+	        return formattedDate;  // This will print "2023-01-01"
+	    } catch (ParseException e) {
+	        e.printStackTrace();
+	    }
+	    return "";
+	}
+
+%>
 <%
 	Sales sales = (Sales)request.getAttribute("sales"); // 要修改的 Sales 物件
 	List<String> products = (List<String>)request.getAttribute("products"); // 所有 product
@@ -21,7 +40,7 @@
 			<fieldset>
 				<legend>Sales Update</legend>
 				序號: <input type="text" id="id" name="id" value="<%=sales.getId() %>" readonly><p />
-				日期: <input type="date" id="date" name="date" value="<%=sales.getDate() %>" required><p />
+				日期: <input type="date" id="date" name="date" value="<%=getStringDate(sales.getDate()) %>" required><p />
 				商品: <select id="product" name="product">
 						<% for(String product : products) { %>
 							<option value="<%=product %>" <%=product.equals(sales.getProduct())?"selected":"" %> ><%=product %></option>
