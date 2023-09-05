@@ -39,7 +39,7 @@ public class SalesDao {
 	// 查詢所有 city
 	public List<String> queryAllCity() {
 		List<String> cities = new ArrayList<>();
-		String sql = "select distinct city from sales_data";
+		String sql = "select distinct city from sales_data where city is not null";
 		try(Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);) {
 			
