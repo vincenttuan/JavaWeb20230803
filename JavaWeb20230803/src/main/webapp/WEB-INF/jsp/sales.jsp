@@ -19,7 +19,7 @@
 				<legend>Sales List</legend>
 				<table class="pure-table pure-table-bordered">
 					<thead>
-						<th>序號</th><th>日期</th><th>商品</th><th>價格</th><th>數量</th><th>城市</th><th>分店</th>
+						<th>序號</th><th>日期</th><th>商品</th><th>價格</th><th>數量</th><th>城市</th><th>分店</th><th>刪除</th>
 					</thead>
 					<tbody>
 						<% for(Sales sales : salesList) { %>
@@ -35,6 +35,11 @@
 								<td><%=sales.getQty() %></td>
 								<td><%=sales.getCity() %></td>
 								<td><%=sales.getBranch() %></td>
+								<td>
+									<a href="${pageContext.request.contextPath}/servlet/sales/delete?id=<%=sales.getId() %>">
+										刪除
+									</a>
+								</td>
 							</tr>
 						<% } %>		
 					</tbody>
