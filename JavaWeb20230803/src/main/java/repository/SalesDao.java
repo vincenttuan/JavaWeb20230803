@@ -103,6 +103,30 @@ public class SalesDao {
 		return salesList;
 	}
 	
+	// 查詢單筆(根據id)
+	public Sales getById(Integer id) {
+		Sales sales = null;
+		String sql = "select id, date, product, price, qty, city, branch from sales_data where id=?";
+		try(PreparedStatement pstmt = conn.prepareStatement(sql);) {
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				sales = new Sales();
+				sales.setId(rs.getInt("id"));
+				sales.setDate(rs.getString("date"));
+				sales.setProduct(rs.getString("product"));
+				sales.setPrice(rs.getInt("price"));
+				sales.setQty(rs.getInt("qty"));
+				sales.setCity(rs.getString("city"));
+				sales.setBranch(rs.getString("branch"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return sales;
+	}
+	
 	// 新增
 	public int create(Sales sales) {
 		String sql = "insert into sales_data(date, product, price, qty, city, branch) values(?, ?, ?, ?, ?, ?)";
