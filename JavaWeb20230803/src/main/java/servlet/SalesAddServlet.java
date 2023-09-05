@@ -18,6 +18,7 @@ public class SalesAddServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/salesadd.jsp");
+		// 給jsp網頁的下拉選單使用
 		req.setAttribute("products", salesService.findAllItems("product")); // 所有 products
 		req.setAttribute("cities", salesService.findAllItems("city")); // 所有 cities
 		req.setAttribute("branches", salesService.findAllItems("branch")); // 所有 branches
