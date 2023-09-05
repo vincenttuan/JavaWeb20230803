@@ -32,8 +32,8 @@ public class SalesService {
 	}
 	
 	// 查詢單筆資料
-	public Sales getSales(Integer id) {
-		return (id == null)?null:salesDao.getById(id);
+	public Sales getSales(String id) {
+		return (id == null)?null:salesDao.getById(Integer.parseInt(id));
 	}
 	
 	// 新增
