@@ -32,7 +32,25 @@ public class SalesUpdateServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setCharacterEncoding("utf-8");
+		String id = req.getParameter("id");
+		String date = req.getParameter("date");
+		String product = req.getParameter("product");
+		String price = req.getParameter("price");
+		String qty = req.getParameter("qty");
+		String city = req.getParameter("city");
+		String branch = req.getParameter("branch");
+		String branch_newname = req.getParameter("branch_newname");
+		if(branch.equals("")) {
+			branch = branch_newname;
+		}
+		int rowcount = salesService.add(date, product, price, qty, city, branch);
 		
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/salesresponse.jsp");
+		req.setAttribute("action", "修改");
+		req.setAttribute("rowcount", rowcount);
+		rd.forward(req, resp);
 	}
 	
 	
