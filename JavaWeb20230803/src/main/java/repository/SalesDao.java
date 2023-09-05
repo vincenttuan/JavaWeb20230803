@@ -22,7 +22,7 @@ public class SalesDao {
 	public List<String> queryAllBranch() {
 		List<String> branches = new ArrayList<>();
 		String sql = "select distinct branch from sales_data where branch is not null";
-		try(Statement stmt = conn.createStatement();
+		try(Statement stmt = MySQL.getInstance().getConnection().createStatement();
 			ResultSet rs = stmt.executeQuery(sql);) {
 			
 			while (rs.next()) {
@@ -40,7 +40,7 @@ public class SalesDao {
 	public List<String> queryAllCity() {
 		List<String> cities = new ArrayList<>();
 		String sql = "select distinct city from sales_data where city is not null";
-		try(Statement stmt = conn.createStatement();
+		try(Statement stmt = MySQL.getInstance().getConnection().createStatement();
 			ResultSet rs = stmt.executeQuery(sql);) {
 			
 			while (rs.next()) {
@@ -58,7 +58,7 @@ public class SalesDao {
 	public List<String> queryAllProduct() {
 		List<String> products = new ArrayList<>();
 		String sql = "select distinct product from sales_data where product is not null";
-		try(Statement stmt = conn.createStatement();
+		try(Statement stmt = MySQL.getInstance().getConnection().createStatement();
 			ResultSet rs = stmt.executeQuery(sql);) {
 			
 			while (rs.next()) {
@@ -78,7 +78,7 @@ public class SalesDao {
 		List<Sales> salesList = new ArrayList<>();
 		
 		String sql = "select id, date, product, price, qty, city, branch from sales_data";
-		try(Statement stmt = conn.createStatement();
+		try(Statement stmt = MySQL.getInstance().getConnection().createStatement();
 			ResultSet rs = stmt.executeQuery(sql);) {
 			
 			// 將資料逐筆抓出並加入到 salesList 中
@@ -107,7 +107,7 @@ public class SalesDao {
 	public Sales getById(Integer id) {
 		Sales sales = null;
 		String sql = "select id, date, product, price, qty, city, branch from sales_data where id=?";
-		try(PreparedStatement pstmt = conn.prepareStatement(sql);) {
+		try(PreparedStatement pstmt = MySQL.getInstance().getConnection().prepareStatement(sql);) {
 			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) { // 是否有找到紀錄
@@ -132,7 +132,7 @@ public class SalesDao {
 	public int create(Sales sales) {
 		String sql = "insert into sales_data(date, product, price, qty, city, branch) values(?, ?, ?, ?, ?, ?)";
 		int rowcount = 0;
-		try(PreparedStatement pstmt = conn.prepareStatement(sql);) {
+		try(PreparedStatement pstmt = MySQL.getInstance().getConnection().prepareStatement(sql);) {
 			pstmt.setString(1, sales.getDate());
 			pstmt.setString(2, sales.getProduct());
 			pstmt.setInt(3, sales.getPrice());
@@ -150,7 +150,7 @@ public class SalesDao {
 	public int update(Sales sales) {
 		String sql = "update sales_data set date=?, product=?, price=?, qty=?, city=?, branch=? where id=?";
 		int rowcount = 0;
-		try(PreparedStatement pstmt = conn.prepareStatement(sql);) {
+		try(PreparedStatement pstmt = MySQL.getInstance().getConnection().prepareStatement(sql);) {
 			pstmt.setString(1, sales.getDate());
 			pstmt.setString(2, sales.getProduct());
 			pstmt.setInt(3, sales.getPrice());
