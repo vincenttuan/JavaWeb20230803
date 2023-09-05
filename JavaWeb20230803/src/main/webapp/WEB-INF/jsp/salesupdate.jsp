@@ -16,9 +16,9 @@
 	        String formattedDate = outputFormat.format(date);
 	        return formattedDate;  // This will print "2023-01-01"
 	    } catch (ParseException e) {
-	        e.printStackTrace();
+	        //e.printStackTrace();
 	    }
-	    return "";
+	    return inputDate;
 	}
 
 %>
