@@ -145,5 +145,24 @@ public class SalesDao {
 		}
 		return rowcount;
 	}
+	
+	// 新增
+	public int update(Sales sales) {
+		String sql = "update set date=?, product=?, price=?, qty=?, city=?, branch=? from sales_data where id=?";
+		int rowcount = 0;
+		try(PreparedStatement pstmt = conn.prepareStatement(sql);) {
+			pstmt.setString(1, sales.getDate());
+			pstmt.setString(2, sales.getProduct());
+			pstmt.setInt(3, sales.getPrice());
+			pstmt.setInt(4, sales.getQty());
+			pstmt.setString(5, sales.getCity());
+			pstmt.setString(6, sales.getBranch());
+			pstmt.setInt(7, sales.getId());
+			rowcount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rowcount;
+	}
 }
 
