@@ -110,7 +110,8 @@ public class SalesDao {
 		try(PreparedStatement pstmt = conn.prepareStatement(sql);) {
 			pstmt.setInt(1, id);
 			ResultSet rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if(rs.next()) { // 是否有找到紀錄
+				// 將紀錄資料注入到 Sales 物件中
 				sales = new Sales();
 				sales.setId(rs.getInt("id"));
 				sales.setDate(rs.getString("date"));
