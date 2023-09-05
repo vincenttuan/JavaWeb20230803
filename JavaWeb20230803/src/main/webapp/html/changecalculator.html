@@ -11,9 +11,28 @@
 				var purchasePrice = document.getElementById('purchasePrice').value;
 				// 找錢
 				var change = totalAmount - purchasePrice;
-				
-				var resultDiv = document.getElementById('result');
-				resultDiv.innerHTML = '找零總金額: ' + change + ' 元';
+				// 顯示找零總金額
+				var resultDiv1 = document.getElementById('result1');
+				resultDiv1.innerHTML = '找零總金額: ' + change + ' 元';
+				// 計算每一種硬幣要找幾個
+				var numFifty = Math.floor(change / 50); // 50元硬幣有幾個
+				console.log(numFifty);
+				change = change % 50; // 扣掉 50 元硬幣後還剩下多少錢
+				console.log(change);
+				var numTen = Math.floor(change / 10); // 10元硬幣有幾個
+				console.log(numTen);
+				change = change % 10; // 扣掉 10 元硬幣後還剩下多少錢
+				console.log(change);
+				var numFive = Math.floor(change / 5); // 5元硬幣有幾個
+				console.log(numFive);
+				change = change % 5; // 扣掉 5 元硬幣後還剩下多少錢
+				console.log(change);
+				var numOne = change; // 1元硬幣有幾個 
+				var resultDiv2 = document.getElementById('result2');
+				resultDiv2.innerHTML = '50元硬幣有: ' + numFifty + ' 個<br>' + 
+									   '10元硬幣有: ' + numTen + ' 個<br>' +
+									   '5元硬幣有: ' + numFive + ' 個<br>' +
+									   '1元硬幣有: ' + numOne + ' 個<br>';
 			}	
 		
 		</script>
@@ -24,8 +43,11 @@
 		購買價: <input type="number" id="purchasePrice" name="purchasePrice" required /><p />
 		<button onclick="calculateChange()">計算找零</button>
 		
-		<div id="result">
+		<div id="result1">
 			<!-- 顯示找零結果 -->
+		</div>
+		<div id="result2">
+			<!-- 顯示找零結果(50元, 10元, 5元, 1元幾個) -->
 		</div>
 	</body>
 </html>
