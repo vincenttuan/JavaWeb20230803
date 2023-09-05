@@ -148,7 +148,7 @@ public class SalesDao {
 	
 	// 修改
 	public int update(Sales sales) {
-		String sql = "update set date=?, product=?, price=?, qty=?, city=?, branch=? from sales_data where id=?";
+		String sql = "update sales_data set date=?, product=?, price=?, qty=?, city=?, branch=? where id=?";
 		int rowcount = 0;
 		try(PreparedStatement pstmt = conn.prepareStatement(sql);) {
 			pstmt.setString(1, sales.getDate());
