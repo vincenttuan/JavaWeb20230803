@@ -21,7 +21,7 @@ public class SalesDao {
 	// 查詢所有 branch
 	public List<String> queryAllBranch() {
 		List<String> branches = new ArrayList<>();
-		String sql = "select distinct branch from sales_data";
+		String sql = "select distinct branch from sales_data where branch is not null";
 		try(Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);) {
 			
@@ -57,7 +57,7 @@ public class SalesDao {
 	// 查詢所有 product
 	public List<String> queryAllProduct() {
 		List<String> products = new ArrayList<>();
-		String sql = "select distinct product from sales_data";
+		String sql = "select distinct product from sales_data where product is not null";
 		try(Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);) {
 			
