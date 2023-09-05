@@ -19,6 +19,7 @@
 					<li><a href="./servlet/many/score">ManyScoreServlet</a></li>
 					<li><a href="./servlet/shoppingcar?name=coffee&coffee_price=100&coffee_price=80&name=cake&cake_price=50&cake_price=40&cake_price=30">ShoppingCarServlet</a></li>
 					<li><a href="./servlet/time">TimeServlet</a></li>
+					<li><a href="./html/changecalculator.html">找零錢計算機</a></li>
 				</ol>
 			</fieldset>
 		</form>
