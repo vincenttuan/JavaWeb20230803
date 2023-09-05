@@ -100,8 +100,6 @@ public class SalesDao {
 			e.printStackTrace();
 		}
 		
-		
-		
 		return salesList;
 	}
 	
