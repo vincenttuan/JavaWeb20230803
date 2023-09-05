@@ -24,7 +24,11 @@
 					<tbody>
 						<% for(Sales sales : salesList) { %>
 							<tr>
-								<td><%=sales.getId() %></td>
+								<td>
+									<a href="${pageContext.request.contextPath}/servlet/sales/update?id=<%=sales.getId() %>">
+										<%=sales.getId() %>
+									</a>
+								</td>
 								<td><%=sales.getDate() %></td>
 								<td><%=sales.getProduct() %></td>
 								<td><%=sales.getPrice() %></td>
