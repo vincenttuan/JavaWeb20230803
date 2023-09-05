@@ -31,6 +31,11 @@ public class SalesService {
 		return salesDao.queryAll();
 	}
 	
+	// 查詢單筆資料
+	public Sales getSales(Integer id) {
+		return (id == null)?null:salesDao.getById(id);
+	}
+	
 	// 新增
 	public int add(String date, String product, String price, String qty, String city, String branch) {
 		// 建立 Sales
