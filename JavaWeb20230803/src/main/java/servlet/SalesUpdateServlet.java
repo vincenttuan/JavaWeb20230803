@@ -45,7 +45,7 @@ public class SalesUpdateServlet extends HttpServlet {
 		if(branch.equals("")) {
 			branch = branch_newname;
 		}
-		int rowcount = salesService.add(date, product, price, qty, city, branch);
+		int rowcount = salesService.update(id, date, product, price, qty, city, branch);
 		
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/salesresponse.jsp");
 		req.setAttribute("action", "修改");
