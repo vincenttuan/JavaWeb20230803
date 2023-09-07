@@ -27,6 +27,9 @@ public class CartServlet extends HttpServlet {
 			case "submit": // 清除購物車資料
 				submitToCart(req, resp);
 				break;
+			case "reduction": // 減量
+				reductionToCart(req, resp);
+				break;
 			case "view": // 查看購物車
 				viewCart(req, resp);
 				break;
@@ -34,10 +37,16 @@ public class CartServlet extends HttpServlet {
 		
 	}
 	
+	private void reductionToCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
+		req.getRequestDispatcher("/WEB-INF/jsp/cart.jsp").forward(req, resp);
+	}
+	
 	private void submitToCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		// 將 session 全部清除
-		//session.invalidate();
+		//session.invalidate(); // 通常該指令用於登出功能較多
 		// 只清除購物車資訊
 		session.removeAttribute("cart");
 		
