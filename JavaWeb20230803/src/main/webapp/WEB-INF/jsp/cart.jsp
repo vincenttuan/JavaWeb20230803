@@ -14,10 +14,14 @@
 	<body>
 		<h1>購物車列表</h1>
 		<ul>
-			<% for( Map.Entry<String, Integer> entry : cart.entrySet() )  {%>
-				<li>
-					商品代號:<%=entry.getKey() %> - 購買數量:<%=entry.getValue() %>
-				</li>
+			<% if(cart != null) { %>
+				<% for( Map.Entry<String, Integer> entry : cart.entrySet() )  {%>
+					<li>
+						商品代號:<%=entry.getKey() %> - 購買數量:<%=entry.getValue() %>
+					</li>
+				<% } %>
+			<% } else { %>
+				<li>購物車無資料</li>
 			<% } %>
 		</ul>
 		<a href="./product">返回商品列表</a>
