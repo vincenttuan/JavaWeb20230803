@@ -14,7 +14,7 @@
 	<body>
 		<h1>購物車列表</h1>
 		<ul>
-			<% if(cart != null) { %>
+			<% if(cart != null && cart.size() != 0) { %>
 				<% for( Map.Entry<String, Integer> entry : cart.entrySet() )  {%>
 					<li>
 						商品代號:<%=entry.getKey() %> - 購買數量:<%=entry.getValue() %>
