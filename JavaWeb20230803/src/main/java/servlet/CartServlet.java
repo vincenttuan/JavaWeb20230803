@@ -70,6 +70,12 @@ public class CartServlet extends HttpServlet {
 		cart.put(product, qty);
 		// 將 cart 寫入到 session 變數中
 		session.setAttribute("cart", cart);
+		
+		// 將指定商品庫存 -1
+		Map<String, Integer> products = (Map<String, Integer>)getServletContext().getAttribute("products");
+		int currentQty = products.get(product); // 目前該商品的庫存
+		products.put(product, currentQty-1); // 將指定商品庫存 -1
+		
 	}
 	
 	
