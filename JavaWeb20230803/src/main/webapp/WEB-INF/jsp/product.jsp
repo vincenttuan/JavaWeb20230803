@@ -16,7 +16,9 @@
 		<ul>
 			<% for( Map.Entry<String, Integer> entry : products.entrySet() )  {%>
 				<li>
-					商品代號:<%=entry.getKey() %> - 庫存數量:<%=entry.getValue() %>
+					商品代號:<%=entry.getKey() %> - 
+					商品名稱: -
+					庫存數量:<%=entry.getValue() %>
 					<a href="./cart?product=<%=entry.getKey()%>&action=add">
 						加入購物車
 					</a>
