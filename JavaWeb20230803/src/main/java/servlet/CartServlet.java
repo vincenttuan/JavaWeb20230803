@@ -37,7 +37,8 @@ public class CartServlet extends HttpServlet {
 		HttpSession session = req.getSession();
 		// 取得購物車的 session 紀錄
 		Map<String, Integer> cart = (Map<String, Integer>)session.getAttribute("cart");
-		resp.getWriter().print("cart: " + cart);
+		
+		req.getRequestDispatcher("/WEB-INF/jsp/cart.jsp").forward(req, resp);
 	}
 	
 	private void addToCart(HttpServletRequest req, String product) {
