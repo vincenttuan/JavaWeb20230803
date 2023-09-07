@@ -54,6 +54,13 @@ public class CartServlet extends HttpServlet {
 	}
 	
 	private void addToCart(HttpServletRequest req, String product) {
+		// 檢查庫存
+		Map<String, Integer> products = (Map<String, Integer>)getServletContext().getAttribute("products");
+		int currentQty = products.get(product); // 目前該商品的庫存
+		if(currentQty <= 0) {
+			return;
+		}
+		//--------------------------------------------------------------------------------------------------
 		// 建立 Session 若 session 已經存在則會繼續使用而不會重新創建
 		HttpSession session = req.getSession();
 		// 取得購物車的 session 紀錄
@@ -70,10 +77,9 @@ public class CartServlet extends HttpServlet {
 		cart.put(product, qty);
 		// 將 cart 寫入到 session 變數中
 		session.setAttribute("cart", cart);
+		//--------------------------------------------------------------------------------------------------
 		
 		// 將指定商品庫存 -1
-		Map<String, Integer> products = (Map<String, Integer>)getServletContext().getAttribute("products");
-		int currentQty = products.get(product); // 目前該商品的庫存
 		products.put(product, currentQty-1); // 將指定商品庫存 -1
 		
 	}
