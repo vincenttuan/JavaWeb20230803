@@ -37,7 +37,9 @@ public class CartServlet extends HttpServlet {
 	private void submitToCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		// 將 session 全部清除
-		session.invalidate();
+		//session.invalidate();
+		// 只清除購物車資訊
+		session.removeAttribute("cart");
 		
 		req.getRequestDispatcher("/WEB-INF/jsp/cart.jsp").forward(req, resp);
 	}
