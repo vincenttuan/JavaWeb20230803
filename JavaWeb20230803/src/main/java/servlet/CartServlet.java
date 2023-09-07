@@ -42,14 +42,12 @@ public class CartServlet extends HttpServlet {
 		// 取得購物車的 session 紀錄
 		Map<String, Integer> cart = (Map<String, Integer>)session.getAttribute("cart");
 		int qty = cart.get(product); // 目前該商品的購買數量
-		if(qty > 0) {
-			// 購買的商品數量 -1
-			cart.put(product, qty-1);
-			// 商品庫存數量 + 1
-			Map<String, Integer> products = (Map<String, Integer>)getServletContext().getAttribute("products");
-			int currentQty = products.get(product); // 目前該商品的庫存
-			products.put(product, currentQty+1); // 將指定商品庫存 +1
-		}
+		// 購買的商品數量 -1
+		cart.put(product, qty-1);
+		// 商品庫存數量 + 1
+		Map<String, Integer> products = (Map<String, Integer>)getServletContext().getAttribute("products");
+		int currentQty = products.get(product); // 目前該商品的庫存
+		products.put(product, currentQty+1); // 將指定商品庫存 +1
 		// 在判斷一次該商品的購買數量, 若為 0 則從購物車中移除
 		if(cart.get(product) == 0) {
 			cart.remove(product);
