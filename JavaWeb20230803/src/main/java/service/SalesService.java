@@ -65,6 +65,12 @@ public class SalesService {
 		return rowcount;
 	}
 	
+	// 刪除
+	public int remove(String id) {
+		int rowcount = salesDao.delete(Integer.parseInt(id));
+		return rowcount;
+	}
+	
 	// 根據分店印出每一家的銷售金額
 	public Map<String, Integer> getBranchSales() {
 		return salesDao.queryAll().stream()

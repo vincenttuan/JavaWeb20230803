@@ -164,5 +164,18 @@ public class SalesDao {
 		}
 		return rowcount;
 	}
+	
+	// 刪除
+	public int delete(Integer id) { 
+		String sql = "delete from sales_data where id=?";
+		int rowcount = 0;
+		try(PreparedStatement pstmt = MySQL.getInstance().getConnection().prepareStatement(sql);) {
+			pstmt.setInt(1, id);
+			rowcount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rowcount;
+	}
 }
 
