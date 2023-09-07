@@ -25,5 +25,6 @@
 			<% } %>
 		</ul>
 		<a href="./product">返回商品列表</a>
+		<a href="./cart?action=submit">結帳(清空購物車資料)</a>
 	</body>
 </html>
