@@ -23,6 +23,6 @@
 				</li>
 			<% } %>
 		</ul>
-		<a href="./chart?action=view">查看購物車</a>
+		<a href="./cart?action=view">查看購物車</a>
 	</body>
 </html>
