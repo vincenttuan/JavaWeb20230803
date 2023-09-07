@@ -24,12 +24,22 @@ public class CartServlet extends HttpServlet {
 				addToCart(req, product);
 				resp.sendRedirect("./product");
 				break;
-	
+			case "submit": // 清除購物車資料
+				submitToCart(req, resp);
+				break;
 			case "view": // 查看購物車
 				viewCart(req, resp);
 				break;
 		}
 		
+	}
+	
+	private void submitToCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		// 將 session 全部清除
+		session.invalidate();
+		
+		req.getRequestDispatcher("/WEB-INF/jsp/cart.jsp").forward(req, resp);
 	}
 	
 	private void viewCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
