@@ -28,7 +28,7 @@ public class CartServlet extends HttpServlet {
 				submitToCart(req, resp);
 				break;
 			case "reduction": // 減量
-				reductionToCart(req, resp);
+				reductionToCart(req, resp, product);
 				break;
 			case "view": // 查看購物車
 				viewCart(req, resp);
@@ -37,8 +37,23 @@ public class CartServlet extends HttpServlet {
 		
 	}
 	
-	private void reductionToCart(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+	private void reductionToCart(HttpServletRequest req, HttpServletResponse resp, String product) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		// 取得購物車的 session 紀錄
+		Map<String, Integer> cart = (Map<String, Integer>)session.getAttribute("cart");
+		int qty = cart.get(product); // 目前該商品的購買數量
+		if(qty > 0) {
+			// 購買的商品數量 -1
+			cart.put(product, qty-1);
+			// 商品庫存數量 + 1
+			Map<String, Integer> products = (Map<String, Integer>)getServletContext().getAttribute("products");
+			int currentQty = products.get(product); // 目前該商品的庫存
+			products.put(product, currentQty+1); // 將指定商品庫存 +1
+		}
+		// 在判斷一次該商品的購買數量, 若為 0 則從購物車中移除
+		if(cart.get(product) == 0) {
+			cart.remove(product);
+		}
 		
 		req.getRequestDispatcher("/WEB-INF/jsp/cart.jsp").forward(req, resp);
 	}
