@@ -27,7 +27,7 @@
 			<fieldset>
 				<legend style="font-size: 20px;">MVC: User</legend>
 				<ol>
-					<li><a href="./servlet/user/add">UserAddServlet</a></li>
+					<li><a href="./servlet/login">UserAddServlet(要先登入才能新增)</a></li>
 				</ol>
 			</fieldset>
 		</form>
