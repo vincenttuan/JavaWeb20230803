@@ -53,6 +53,7 @@ public class CartServlet extends HttpServlet {
 		}
 		// 清除購物車資料
 		session.removeAttribute("cart");
+		req.getRequestDispatcher("/WEB-INF/jsp/cart.jsp").forward(req, resp);
 	}
 	
 	private void reductionToCart(HttpServletRequest req, HttpServletResponse resp, String product) throws ServletException, IOException {
