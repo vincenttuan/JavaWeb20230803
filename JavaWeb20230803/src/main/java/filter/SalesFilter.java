@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebFilter(value = "/servlet/sales/*")
+@WebFilter(value = {"/servlet/sales/*"})
 public class SalesFilter extends HttpFilter {
 
 	@Override
