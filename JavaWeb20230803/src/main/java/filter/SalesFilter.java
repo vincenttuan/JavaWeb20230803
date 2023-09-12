@@ -7,6 +7,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequestWrapper;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import service.UserService;
@@ -40,7 +41,20 @@ public class SalesFilter extends HttpFilter {
 			HttpSession session = request.getSession(); // 相當於 getSession(true)
 			session.setAttribute("login_status", "true");
 			// 放行
-			chain.doFilter(request, response);
+			//chain.doFilter(request, response);
+			HttpServletRequest httpRequest = (HttpServletRequest)request;
+			if("POST".equalsIgnoreCase(httpRequest.getMethod())) {
+				HttpServletRequestWrapper wrapper = new HttpServletRequestWrapper(httpRequest) {
+					@Override
+					public String getMethod() {
+						return "GET";
+					}
+				};
+				chain.doFilter(wrapper, response);
+			} else {
+				chain.doFilter(request, response);
+			}
+			
 		} else {
 			// 導向登入頁面給前端
 			request.getRequestDispatcher("/WEB-INF/jsp/salesloginform.jsp").forward(request, response);
