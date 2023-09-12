@@ -5,6 +5,7 @@
 <% 
 	Map<String, String> productNames = (Map<String, String>)application.getAttribute("productNames");
 	Map<String, Integer> cart = (Map<String, Integer>)session.getAttribute("cart");
+	String username = session.getAttribute("username") + "";
 %>
 <html>
 	<head>
@@ -12,7 +13,7 @@
 		<title>百元熱炒店-購物車</title>
 	</head>
 	<body>
-		<h1>購物車列表</h1>
+		<h1>購物車列表(登入者:<%=username %>)</h1>
 		<ul>
 			<% if(cart != null && cart.size() != 0) { %>
 				<% for( Map.Entry<String, Integer> entry : cart.entrySet() )  {%>
