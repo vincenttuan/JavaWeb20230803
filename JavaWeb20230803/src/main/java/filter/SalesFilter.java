@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import service.UserService;
 
 @WebFilter(value = {"/servlet/sales/*"})
 public class SalesFilter extends HttpFilter {
@@ -29,10 +30,21 @@ public class SalesFilter extends HttpFilter {
 		
 	}
 	
-	// 沒有帶 username 與 password 的參數
+	// 有帶 username 與 password 的參數
 	private void case2(HttpServletRequest request, HttpServletResponse response, FilterChain chain, 
 						String username, String password) throws IOException, ServletException {
-		
+		UserService userService = new UserService();
+		boolean pass = userService.loginCheck(username, password);
+		if(pass) {
+			// 建立 session 並將 true 設定給 login_status
+			HttpSession session = request.getSession(); // 相當於 getSession(true)
+			session.setAttribute("login_status", "true");
+			// 放行
+			chain.doFilter(request, response);
+		} else {
+			// 導向登入頁面給前端
+			request.getRequestDispatcher("/WEB-INF/jsp/salesloginform.jsp").forward(request, response);
+		}
 	}
 	
 	// 沒有帶 username 與 password 的參數
