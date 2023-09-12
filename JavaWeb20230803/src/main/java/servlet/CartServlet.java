@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebServlet(value = "/servlet/cart")
+@WebServlet(value = {"/servlet/cart", "/servlet/shopping/cart"})
 public class CartServlet extends HttpServlet {
 
 	@Override

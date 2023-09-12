@@ -30,7 +30,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * cake_price=30
  * */
 
-@WebServlet("/servlet/shoppingcar")
+@WebServlet(value = {"/servlet/shoppingcar", "/servlet/shopping/shoppingcar"})
 public class ShoppingCarServlet extends HttpServlet {
 
 	@Override
