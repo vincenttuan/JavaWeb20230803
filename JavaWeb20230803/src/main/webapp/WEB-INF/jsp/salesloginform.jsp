@@ -9,7 +9,7 @@
 	</head>
 	<body style="padding: 15px">
 		
-		<form method="post" class="pure-form">
+		<form method="get" class="pure-form">
 			<fieldset>
 				<legend>Sales 登入</legend>
 				帳號: <input type="text" id="username" name="username" placeholder="請輸入帳號" required><p />
