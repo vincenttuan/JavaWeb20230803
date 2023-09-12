@@ -16,8 +16,22 @@ public class SalesFilter extends HttpFilter {
 	@Override
 	protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
 		
-		case1(request, response, chain);
+		if(username != null && password != null) {
+			// 有帶 username 與 password 的參數
+			case2(request, response, chain, username, password);
+		} else {
+			// 沒有帶 username 與 password 的參數
+			case1(request, response, chain);
+		}
+		
+	}
+	
+	// 沒有帶 username 與 password 的參數
+	private void case2(HttpServletRequest request, HttpServletResponse response, FilterChain chain, 
+						String username, String password) throws IOException, ServletException {
 		
 	}
 	
