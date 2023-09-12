@@ -17,6 +17,13 @@ public class SalesFilter extends HttpFilter {
 	protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		
+		case1(request, response, chain);
+		
+	}
+	
+	// 沒有帶 username 與 password 的參數
+	private void case1(HttpServletRequest request, HttpServletResponse response, FilterChain chain) 
+			throws IOException, ServletException {
 		// 判斷是否有登入的 session 屬性資料
 		HttpSession session = request.getSession(false);
 		// 取得 session 的登入狀態紀錄 login_status
