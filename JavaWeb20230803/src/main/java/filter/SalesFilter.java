@@ -41,9 +41,8 @@ public class SalesFilter extends HttpFilter {
 			HttpSession session = request.getSession(); // 相當於 getSession(true)
 			session.setAttribute("login_status", "true");
 			// 放行
-			HttpServletRequest httpRequest = (HttpServletRequest)request;
-			if("POST".equalsIgnoreCase(httpRequest.getMethod())) {
-				HttpServletRequestWrapper wrapper = new HttpServletRequestWrapper(httpRequest) {
+			if("POST".equalsIgnoreCase(request.getMethod())) {
+				HttpServletRequestWrapper wrapper = new HttpServletRequestWrapper(request) {
 					@Override
 					public String getMethod() {
 						return "GET";
