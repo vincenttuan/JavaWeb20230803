@@ -63,8 +63,8 @@
 			<fieldset>
 				<legend style="font-size: 20px;">MVC: Product</legend>
 				<ol>
-					<li><a href="./servlet/product">/servlet/product 訂購商品</a></li>
-					<li><a href="./servlet/shoppingcar">/servlet/shoppingcar 購物車</a></li>
+					<li><a href="./servlet/shopping/product">/servlet/shopping/product 訂購商品</a></li>
+					<li><a href="./servlet/shopping/shoppingcar">/servlet/shopping/shoppingcar 購物車</a></li>
 				</ol>
 			</fieldset>
 		</form>
