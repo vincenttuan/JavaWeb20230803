@@ -16,7 +16,13 @@ public class SalesFilter extends HttpFilter {
 	protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		
-		response.getWriter().print("Stop");
+		// 判斷參數 pass=true 才要放行
+		String pass = request.getParameter("pass");
+		if(pass != null && pass.equals("true")) {
+			chain.doFilter(request, response); // 放行
+		} else {
+			response.getWriter().print("Stop");
+		}
 		
 	}
 	
