@@ -40,6 +40,8 @@ public class SalesFilter extends HttpFilter {
 			// 建立 session 並將 true 設定給 login_status
 			HttpSession session = request.getSession(); // 相當於 getSession(true)
 			session.setAttribute("login_status", "true");
+			session.setAttribute("username", username);
+			
 			// 放行
 			if("POST".equalsIgnoreCase(request.getMethod())) {
 				HttpServletRequestWrapper wrapper = new HttpServletRequestWrapper(request) {
