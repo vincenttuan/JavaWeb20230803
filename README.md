@@ -57,6 +57,7 @@ select * from exams;
 ALTER TABLE sales_data
 ADD id INT NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;
 </pre>
+
 # 購物車系統
 <pre>	
 create table if not exists products(
@@ -66,6 +67,7 @@ create table if not exists products(
     product_qty INT NOT NULL,
     product_price INT
 );
+	
 CREATE TABLE Orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
     product_id INT NOT NULL,
