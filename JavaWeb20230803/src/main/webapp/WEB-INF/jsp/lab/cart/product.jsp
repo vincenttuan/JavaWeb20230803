@@ -11,10 +11,10 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>百元熱炒店</title>
+		<title>百元熱炒店-資料庫版</title>
 	</head>
 	<body>
-		<h1>商品列表(登入者:<%=username %>)</h1>
+		<h1>商品列表-資料庫版(登入者:<%=username %>)</h1>
 		<ul>
 			<% for( Product product : products )  {%>
 				<li>
