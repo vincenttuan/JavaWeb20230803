@@ -48,7 +48,7 @@ insert into exams(username, password, exam_no, exam_fee, paid, exam_date,
 		  exam_period_1, exam_period_2, exam_period_3, memo) 
 	   values('john', '1234', '1z0-819', 8000, true, '2023-08-24',
 		  true, false, true, 'Test');
-</pre>
+
 
 # 資料查詢
 select * from exams;
@@ -57,3 +57,22 @@ select * from exams;
 ALTER TABLE sales_data
 ADD id INT NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;
 
+# 購物車系統
+create table if not exists products(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    product_code VARCHAR(255) NOT NULL,
+    product_name VARCHAR(255) NOT NULL,
+    product_qty INT NOT NULL,
+    product_price INT
+);
+CREATE TABLE Orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES Products(id),
+    user_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES Users(id),
+    order_qty INT NOT NULL,
+    order_status INT default 0 NOT NULL,
+    order_ts timestamp default current_timestamp
+);
+</pre>
