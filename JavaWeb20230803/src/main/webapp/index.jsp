@@ -68,6 +68,13 @@
 				</ol>
 			</fieldset>
 		</form>
-		
+		<form class="pure-form">
+			<fieldset>
+				<legend style="font-size: 20px;">MVC + MySQL: 購物車系統</legend>
+				<ol>
+					<li><a href="./lab/cart">/lab/cart 訂購商品</a></li>
+				</ol>
+			</fieldset>
+		</form>
 	</body>
 </html>
