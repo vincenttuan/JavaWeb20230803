@@ -18,8 +18,8 @@
 		<ul>
 			<% for( Product product : products )  {%>
 				<li>
-					商品代號:<%=product.getProductCode() %> - <%=product.getProductName() %> -
-					庫存數量:<%=product.getProductQty() %> - $<%=product.getProductPrice() %>
+					商品代號:<%=product.getProductCode() %> - <%=product.getProductName() %> ($<%=product.getProductPrice() %>) -
+					庫存數量:<%=product.getProductQty() %>
 					<a href="#">
 						加入購物車
 					</a>
