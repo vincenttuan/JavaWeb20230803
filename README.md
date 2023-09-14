@@ -56,8 +56,9 @@ select * from exams;
 # sales_data 資料表加入 id 欄位
 ALTER TABLE sales_data
 ADD id INT NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;
-
+</pre>
 # 購物車系統
+<pre>	
 create table if not exists products(
 	id INT AUTO_INCREMENT PRIMARY KEY,
     product_code VARCHAR(255) NOT NULL,
