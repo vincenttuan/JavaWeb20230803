@@ -60,15 +60,20 @@ ADD id INT NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;
 
 # 購物車系統
 <pre>	
+-- 刪除舊有資料表
+drop table if exists orders;
+drop table if exists products;
+
+-- 新增資料表
 create table if not exists products(
-	id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     product_code VARCHAR(255) NOT NULL,
     product_name VARCHAR(255) NOT NULL,
     product_qty INT NOT NULL,
     product_price INT
 );
 	
-CREATE TABLE Orders (
+CREATE TABLE orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
     product_id INT NOT NULL,
     FOREIGN KEY (product_id) REFERENCES Products(id),
@@ -78,4 +83,14 @@ CREATE TABLE Orders (
     order_status INT default 0 NOT NULL,
     order_ts timestamp default current_timestamp
 );
+
+-- 新增預設資料
+insert into products(product_code, product_name, product_qty, product_price) values ('P01', '宮保雞丁', 10, 200);
+insert into products(product_code, product_name, product_qty, product_price) values ('P02', '番茄炒蛋', 20, 100);
+insert into products(product_code, product_name, product_qty, product_price) values ('P03', '麻油腰子', 30, 150);
+
+insert into orders(product_id, user_id, order_qty, order_status) values(1, 1, 1, 1);
+insert into orders(product_id, user_id, order_qty, order_status) values(2, 2, 2, 1);
+insert into orders(product_id, user_id, order_qty, order_status) values(1, 3, 3, 0);
+
 </pre>
