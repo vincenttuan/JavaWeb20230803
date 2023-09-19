@@ -28,12 +28,13 @@ public class CartServlet extends HttpServlet {
  		int userId = Integer.parseInt(session.getAttribute("userid")+"");
  		
  		// 取得 action
- 		String action = req.getParameter("action");
+ 		String action = req.getParameter("action") + "";
  		switch (action) {
  			case "view":
  				// 檢視購物車資料
  				List<Order> orders = orderService.findByUserId(userId, 0);
  				List<Product> products = productService.findAll();
+ 				// 重導到購物車頁面
  				RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/lab/cart/cart.jsp");
  				req.setAttribute("orders", orders);
  				req.setAttribute("products", products);
