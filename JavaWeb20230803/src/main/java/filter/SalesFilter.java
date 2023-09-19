@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletRequestWrapper;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import repository.model.User;
 import service.UserService;
 
 @WebFilter(value = {"/servlet/sales/*", "/servlet/shopping/*", "/lab/cart/*"})
@@ -35,7 +36,8 @@ public class SalesFilter extends HttpFilter {
 	private void case2(HttpServletRequest request, HttpServletResponse response, FilterChain chain, 
 						String username, String password) throws IOException, ServletException {
 		UserService userService = new UserService();
-		boolean pass = userService.loginCheck(username, password);
+		User user = userService.loginCheck(username, password);
+		boolean pass = user != null; 
 		if(pass) {
 			// 建立 session 並將 true 設定給 login_status
 			HttpSession session = request.getSession(); // 相當於 getSession(true)

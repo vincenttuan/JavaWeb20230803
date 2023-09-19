@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import repository.model.User;
 import service.UserService;
 
 @WebServlet(urlPatterns = "/servlet/login")
@@ -29,8 +30,8 @@ public class LoginServlet extends HttpServlet {
 		String password = req.getParameter("password");
 		
 		// 判斷登入使否成功 ?
-		boolean check = userService.loginCheck(username, password);
-		
+		User user = userService.loginCheck(username, password);
+		boolean check = user != null;
 		// 建立分派器
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/loginresult.jsp");
 		// 傳遞參數
