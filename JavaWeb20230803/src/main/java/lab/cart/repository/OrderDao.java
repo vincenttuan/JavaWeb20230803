@@ -3,10 +3,39 @@ package lab.cart.repository;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import lab.cart.repository.model.Order;
 import repository.MySQL;
 
 public class OrderDao {
+	
+	public List<Order> findByUserId(int userId, int orderStatus) {
+		String sql = "select id, product_id, user_id, order_qty, order_status, order_ts from orders where user_id = ? and order_status = ?";
+		List<Order> orders = new ArrayList<>();
+		try(PreparedStatement pstmt = MySQL.getInstance().getConnection().prepareStatement(sql)) {
+			pstmt.setInt(1, userId);
+			pstmt.setInt(2, orderStatus);
+			
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Order order = new Order();
+				order.setId(rs.getInt("id"));
+				order.setProductId(rs.getInt("product_id"));
+				order.setUserId(rs.getInt("user_id"));
+				order.setOrderQty(rs.getInt("order_qty"));
+				order.setOrderStatus(rs.getInt("order_status"));
+				order.setOrderTs(rs.getDate("order_ts"));
+				
+				orders.add(order);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return orders;
+	}
 	
 	// 該使用者的購物車中是否有此商品
 	public boolean hasProductInCartByUserId(int userId, int productId) {

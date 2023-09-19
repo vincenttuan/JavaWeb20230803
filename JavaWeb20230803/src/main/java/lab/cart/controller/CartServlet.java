@@ -1,6 +1,7 @@
 package lab.cart.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,12 +9,16 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import lab.cart.repository.model.Order;
+import lab.cart.repository.model.Product;
 import lab.cart.service.OrderService;
+import lab.cart.service.ProductService;
 
 @WebServlet(value = "/lab/cart")
 public class CartServlet extends HttpServlet {
 	
 	private OrderService orderService = new OrderService();
+	private ProductService productService = new ProductService();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,7 +31,8 @@ public class CartServlet extends HttpServlet {
  		switch (action) {
  			case "view":
  				// 檢視購物車資料
- 				
+ 				List<Order> orders = 
+ 				List<Product> products = 
 				break;
  			default:
  				// 新增商品
