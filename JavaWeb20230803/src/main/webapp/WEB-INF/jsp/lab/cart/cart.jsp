@@ -21,7 +21,8 @@
 			<% if(orders != null && orders.size() != 0) { %>
 				<% for( Order order : orders )  {%>
 					<li>
-						商品代號:<%=order.getProductId() %> - 購買數量:<%=order.getOrderQty() %>
+						商品代號:<%=order.getProductId() %> - 
+						購買數量:<%=String.format("%02d", order.getOrderQty()) %>
 						<a href="./cart?product_id=<%=order.getProductId() %>">
 							增量
 						</a>
