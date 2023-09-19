@@ -12,7 +12,7 @@ public class OrderService {
 	
 	// 新增商品到購物車中
 	public boolean addProductInCart(int userId, int productId, int qty) {
-		return orderDao.addProductInCart(userId, productId, 1);
+		return orderDao.addProductInCart(userId, productId, qty);
 	}
 	
 	// 修改購物車中該商品的數量
