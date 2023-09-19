@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lab.cart.repository.model.Product;
 import lab.cart.service.ProductService;
 
-@WebServlet(value = "/lab/cart")
+@WebServlet(value = "/lab/product")
 public class ProductServlet extends HttpServlet {
 	
 	private ProductService productService = new ProductService();
