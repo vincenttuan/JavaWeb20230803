@@ -1,9 +1,17 @@
 package lab.cart.service;
 
+import java.util.List;
+
 import lab.cart.repository.OrderDao;
+import lab.cart.repository.model.Order;
+import repository.model.User;
 
 public class OrderService {
 	private OrderDao orderDao = new OrderDao();
+	
+	public List<Order> findByUserId(int userId, int orderStatus) {
+		return orderDao.findByUserId(userId, orderStatus);
+	}
 	
 	// 該使用者的購物車中是否有此商品
 	public boolean hasProductInCartByUserId(int userId, int productId) {

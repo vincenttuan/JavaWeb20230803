@@ -31,7 +31,7 @@ public class CartServlet extends HttpServlet {
  		switch (action) {
  			case "view":
  				// 檢視購物車資料
- 				List<Order> orders = 
+ 				List<Order> orders = o
  				List<Product> products = 
 				break;
  			default:
