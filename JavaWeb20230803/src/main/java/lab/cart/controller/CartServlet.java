@@ -3,6 +3,7 @@ package lab.cart.controller;
 import java.io.IOException;
 import java.util.List;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -33,6 +34,10 @@ public class CartServlet extends HttpServlet {
  				// 檢視購物車資料
  				List<Order> orders = orderService.findByUserId(userId, 0);
  				List<Product> products = productService.findAll();
+ 				RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/lab/cart/cart.jsp");
+ 				req.setAttribute("orders", orders);
+ 				req.setAttribute("products", products);
+ 				rd.forward(req, resp);
 				break;
  			case "reduction":
  				break;
