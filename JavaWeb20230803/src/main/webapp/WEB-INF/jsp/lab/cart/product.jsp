@@ -26,6 +26,6 @@
 				</li>
 			<% } %>
 		</ul>
-		<a href="#">查看購物車</a>
+		<a href="<%=request.getContextPath() %>/lab/cart?action=view">查看購物車</a>
 	</body>
 </html>
