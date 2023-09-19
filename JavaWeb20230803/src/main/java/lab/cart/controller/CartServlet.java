@@ -31,9 +31,15 @@ public class CartServlet extends HttpServlet {
  		switch (action) {
  			case "view":
  				// 檢視購物車資料
- 				List<Order> orders = o
- 				List<Product> products = 
+ 				List<Order> orders = orderService.findByUserId(userId, 0);
+ 				List<Product> products = productService.findAll();
 				break;
+ 			case "reduction":
+ 				break;
+ 			case "submit":
+ 				break;
+ 			case "empty":
+ 				break;
  			default:
  				// 新增商品
  				addProduct(req, resp, userId);
