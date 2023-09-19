@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import repository.model.User;
 import service.UserService;
 
-@WebFilter(value = {"/servlet/sales/*", "/servlet/shopping/*", "/lab/cart/*"})
+@WebFilter(value = {"/servlet/sales/*", "/servlet/shopping/*", "/lab/*"})
 public class SalesFilter extends HttpFilter {
 
 	@Override
