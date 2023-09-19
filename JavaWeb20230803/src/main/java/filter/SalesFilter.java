@@ -43,6 +43,7 @@ public class SalesFilter extends HttpFilter {
 			HttpSession session = request.getSession(); // 相當於 getSession(true)
 			session.setAttribute("login_status", "true");
 			session.setAttribute("username", username);
+			session.setAttribute("userid", user.getId());
 			
 			// 放行
 			if("POST".equalsIgnoreCase(request.getMethod())) {
