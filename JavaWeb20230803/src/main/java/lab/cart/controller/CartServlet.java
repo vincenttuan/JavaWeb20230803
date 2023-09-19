@@ -33,7 +33,8 @@ public class CartServlet extends HttpServlet {
  			orderService.addProductInCart(userId, productId, qty);
  		}
 		
- 		resp.getWriter().print("CartServlet OK, Please check database first~");
+ 		//resp.getWriter().print("CartServlet OK, Please check database first~");
+ 		resp.sendRedirect(getServletContext().getContextPath() + "/lab/product");
 	}
 	
 }
