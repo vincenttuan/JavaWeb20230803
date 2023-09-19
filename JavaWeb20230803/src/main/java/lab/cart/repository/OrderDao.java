@@ -44,4 +44,21 @@ public class OrderDao {
 		return false;
 	}
 	
+	// 修改購物車中該商品的數量
+	// 根據 qty 的正負值來修正數量
+	public boolean modifyProductQtyInCartByProductId(int userId, int productId, int qty) {
+		String sql = "update orders set order_qty = order_qty + ? where user_id = ? and product_id = ? and order_status = 0";
+		try(PreparedStatement pstmt = MySQL.getInstance().getConnection().prepareStatement(sql)) {
+			pstmt.setInt(1, qty);
+			pstmt.setInt(2, userId);
+			pstmt.setInt(3, productId);
+			
+			int rowcount = pstmt.executeUpdate(); 
+			return rowcount >= 1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 }
