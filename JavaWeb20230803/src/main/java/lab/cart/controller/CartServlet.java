@@ -76,6 +76,11 @@ public class CartServlet extends HttpServlet {
 		
  		//resp.getWriter().print("CartServlet OK, Please check database first~");
  		//resp.sendRedirect(getServletContext().getContextPath() + path);
+ 		// 檢視購物車資料
+		List<Order> orders = orderService.findByUserId(userId, 0);
+		List<Product> products = productService.findAll();
+		req.setAttribute("orders", orders);
+		req.setAttribute("products", products);
  		req.getRequestDispatcher("/WEB-INF/jsp/lab/cart/" + path).forward(req, resp);
 	}
 	
