@@ -41,6 +41,7 @@ public class CartServlet extends HttpServlet {
  				rd.forward(req, resp);
 				break;
  			case "reduction":
+ 				reduceProduct(req, resp, userId);
  				break;
  			case "submit":
  				break;
@@ -57,6 +58,11 @@ public class CartServlet extends HttpServlet {
 		}
  		
  		
+	}
+	
+	// 商品減量
+	private void reduceProduct(HttpServletRequest req, HttpServletResponse resp, int userId) throws ServletException, IOException {
+		
 	}
 	
 	// 新增商品
