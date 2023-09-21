@@ -43,4 +43,14 @@ public class OrderService {
 		return check;
 	}
 	
+	// 刪除該使用者購物車的所有資料紀錄
+	public void removeAllProductFromCart(int userId) {
+		orderDao.removeAllProductFromCart(userId);
+	}
+	
+	// 使用者進行結帳
+	public void checkOut(int userId) {
+		orderDao.checkOut(userId);
+	}
+	
 }
