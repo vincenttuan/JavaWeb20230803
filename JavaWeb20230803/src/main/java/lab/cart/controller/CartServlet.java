@@ -61,16 +61,7 @@ public class CartServlet extends HttpServlet {
  		int productId = Integer.parseInt(req.getParameter("product_id"));
  		// 要購買的數量
  		int qty = 1;
- 		// 取得商品庫存量
-		int productQty = getProductStockById(productId);
-		// 確認是否有足夠的庫存量 ?
-		if(productQty < qty) { // 庫存不足
-			String errorMsg = "庫存不足";
-			req.setAttribute("errorMsg", errorMsg);
-			req.getRequestDispatcher("/WEB-INF/jsp/lab/cart/error.jsp").forward(req, resp);
-			return;
-		} 
-		
+ 		
  		// 該使用者的購物車中是否有此商品 
  		boolean hasProduct = orderService.hasProductInCartByUserId(userId, productId);
  		if(hasProduct) {
@@ -83,10 +74,6 @@ public class CartServlet extends HttpServlet {
  		resp.sendRedirect(getServletContext().getContextPath() + "/lab/product");
 	}
 	
-	// 確認商品庫存量
-	private int getProductStockById(int productId) {
-		Product product = productService.getProductById(productId);
-		return product == null ? 0 : product.getProductQty();
-	}
+	
 	
 }
