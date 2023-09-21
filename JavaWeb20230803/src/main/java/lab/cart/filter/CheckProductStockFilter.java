@@ -22,7 +22,10 @@ public class CheckProductStockFilter extends HttpFilter {
 			throws IOException, ServletException {
 		
 		String action = request.getParameter("action") + "";
-		int productId = Integer.parseInt(request.getParameter("product_id"));
+		int productId = 0;
+		if(request.getParameter("product_id") != null) {
+			productId = Integer.parseInt(request.getParameter("product_id"));
+		}
 		String errorMsg = null;
 		switch (action) {
 			case "": // 沒有傳入 action 參數
