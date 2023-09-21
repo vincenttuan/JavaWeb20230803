@@ -18,6 +18,8 @@
 		<ul>
 			<%=errorMsg %>
 		</ul>
+		<a href="<%=request.getContextPath() %>/lab/product">商品列表</a>
+		|
 		<a href="<%=request.getContextPath() %>/lab/cart?action=view">查看購物車</a>
 	</body>
 </html>
