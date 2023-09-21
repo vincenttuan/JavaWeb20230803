@@ -107,4 +107,16 @@ public class OrderDao {
 		}
 	}
 	
+	// 刪除該使用者購物車的所有資料紀錄
+	public void removeAllProductFromCart(int userId) {
+		String sql = "delete from orders where user_id = ? and order_status = 0";
+		try(PreparedStatement pstmt = MySQL.getInstance().getConnection().prepareStatement(sql)) {
+			pstmt.setInt(1, userId);
+			// 執行刪除
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
