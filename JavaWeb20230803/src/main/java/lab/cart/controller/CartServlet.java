@@ -46,9 +46,13 @@ public class CartServlet extends HttpServlet {
  				break;
  			case "empty":
  				break;
+ 			case "add":
+ 				// 新增商品
+ 				addProduct(req, resp, userId, "/lab/cart");
+ 				break;
  			default:
  				// 新增商品
- 				addProduct(req, resp, userId);
+ 				addProduct(req, resp, userId, "/lab/product");
  				break;
 		}
  		
@@ -56,7 +60,7 @@ public class CartServlet extends HttpServlet {
 	}
 	
 	// 新增商品
-	private void addProduct(HttpServletRequest req, HttpServletResponse resp, int userId) throws ServletException, IOException {
+	private void addProduct(HttpServletRequest req, HttpServletResponse resp, int userId, String path) throws ServletException, IOException {
 		// 取得商品 id
  		int productId = Integer.parseInt(req.getParameter("product_id"));
  		// 要購買的數量
@@ -71,7 +75,7 @@ public class CartServlet extends HttpServlet {
  		}
 		
  		//resp.getWriter().print("CartServlet OK, Please check database first~");
- 		resp.sendRedirect(getServletContext().getContextPath() + "/lab/product");
+ 		resp.sendRedirect(getServletContext().getContextPath() + path);
 	}
 	
 	

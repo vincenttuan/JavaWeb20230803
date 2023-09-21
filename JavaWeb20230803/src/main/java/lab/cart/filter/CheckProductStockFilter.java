@@ -28,6 +28,7 @@ public class CheckProductStockFilter extends HttpFilter {
 		}
 		String errorMsg = null;
 		switch (action) {
+			case "add": // 增量
 			case "null": // 沒有傳入 action 參數
 				// 取得商品庫存量
 				int productQty = getProductStockById(productId);
