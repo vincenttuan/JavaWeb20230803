@@ -27,13 +27,20 @@ public class OrderService {
 	
 	// 購物車中的商品減量
 	public boolean reduceProductInCart(int userId, int productId) {
-		return orderDao.reduceProductInCart(userId, productId);
+		//boolean check = orderDao.reduceProductInCart(userId, productId);
+		//orderDao.removeProductFromCartIfOutOfStock();
+		//return check;
+		return modifyProductQtyInCartByProductId(userId, productId, -1);
 	}
 	
 	// 修改購物車中該商品的數量
 	// 根據 qty 的正負值來修正數量
 	public boolean modifyProductQtyInCartByProductId(int userId, int productId, int qty) {
-		return orderDao.modifyProductQtyInCartByProductId(userId, productId, qty);
+		boolean check =  orderDao.modifyProductQtyInCartByProductId(userId, productId, qty);
+		if(qty < 0) {
+			orderDao.removeProductFromCartIfOutOfStock();
+		}
+		return check;
 	}
 	
 }
