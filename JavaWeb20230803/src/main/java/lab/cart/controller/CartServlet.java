@@ -48,11 +48,11 @@ public class CartServlet extends HttpServlet {
  				break;
  			case "add":
  				// 新增商品
- 				addProduct(req, resp, userId, "/lab/cart");
+ 				addProduct(req, resp, userId, "cart.jsp");
  				break;
  			default:
  				// 新增商品
- 				addProduct(req, resp, userId, "/lab/product");
+ 				addProduct(req, resp, userId, "product.jsp");
  				break;
 		}
  		
@@ -75,7 +75,8 @@ public class CartServlet extends HttpServlet {
  		}
 		
  		//resp.getWriter().print("CartServlet OK, Please check database first~");
- 		resp.sendRedirect(getServletContext().getContextPath() + path);
+ 		//resp.sendRedirect(getServletContext().getContextPath() + path);
+ 		req.getRequestDispatcher("/WEB-INF/jsp/lab/cart/" + path).forward(req, resp);
 	}
 	
 	
