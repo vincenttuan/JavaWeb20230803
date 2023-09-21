@@ -44,8 +44,10 @@ public class CartServlet extends HttpServlet {
  				reduceProduct(req, resp, userId);
  				break;
  			case "submit":
+ 				checkOut(req, resp, userId);
  				break;
  			case "empty":
+ 				emptyCart(req, resp, userId);
  				break;
  			case "add":
  				// 新增商品
@@ -58,6 +60,28 @@ public class CartServlet extends HttpServlet {
 		}
  		
  		
+	}
+	
+	// 清空購物車
+	private void emptyCart(HttpServletRequest req, HttpServletResponse resp, int userId) throws ServletException, IOException {
+		orderService.removeAllProductFromCart(userId);
+		// 檢視購物車資料
+		List<Order> orders = orderService.findByUserId(userId, 0);
+		List<Product> products = productService.findAll();
+		req.setAttribute("orders", orders);
+		req.setAttribute("products", products);
+ 		req.getRequestDispatcher("/WEB-INF/jsp/lab/cart/cart.jsp").forward(req, resp);
+	}
+	
+	// 結帳
+	private void checkOut(HttpServletRequest req, HttpServletResponse resp, int userId) throws ServletException, IOException {
+		orderService.checkOut(userId);
+		// 檢視購物車資料
+		List<Order> orders = orderService.findByUserId(userId, 0);
+		List<Product> products = productService.findAll();
+		req.setAttribute("orders", orders);
+		req.setAttribute("products", products);
+ 		req.getRequestDispatcher("/WEB-INF/jsp/lab/cart/cart.jsp").forward(req, resp);
 	}
 	
 	// 商品減量
