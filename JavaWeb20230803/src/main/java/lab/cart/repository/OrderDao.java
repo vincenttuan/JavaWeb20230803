@@ -119,4 +119,16 @@ public class OrderDao {
 		}
 	}
 	
+	// 使用者進行結帳
+	public void checkOut(int userId) {
+		String sql = "update orders set order_status = 1 where user_id = ?  and order_status = 0";
+		try(PreparedStatement pstmt = MySQL.getInstance().getConnection().prepareStatement(sql)) {
+			pstmt.setInt(1, userId);
+			// 執行修改
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
