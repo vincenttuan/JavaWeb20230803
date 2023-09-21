@@ -38,7 +38,9 @@
 			<% } %>
 		</ul>
 		<a href="./product">返回商品列表</a>
-		<a href="./cart?action=empty">清空購物車</a>
-		<a href="./cart?action=submit">結帳</a>
+		<% if(orders != null && orders.size() != 0) { %>
+			<a href="./cart?action=empty">清空購物車</a>
+			<a href="./cart?action=submit">結帳</a>
+		<% } %>
 	</body>
 </html>
