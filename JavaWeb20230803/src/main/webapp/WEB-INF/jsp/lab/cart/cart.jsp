@@ -23,7 +23,7 @@
 					<li>
 						商品代號:<%=order.getProductId() %> - 
 						購買數量:<%=String.format("%02d", order.getOrderQty()) %>
-						<a href="./cart?product_id=<%=order.getProductId() %>">
+						<a href="./cart?product_id=<%=order.getProductId() %>&action=add">
 							增量
 						</a>
 						&nbsp;<span style="color: #ff0000">|</span>&nbsp;
