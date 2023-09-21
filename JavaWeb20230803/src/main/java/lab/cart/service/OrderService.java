@@ -1,6 +1,8 @@
 package lab.cart.service;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 import lab.cart.repository.OrderDao;
 import lab.cart.repository.model.Order;
@@ -21,6 +23,11 @@ public class OrderService {
 	// 新增商品到購物車中
 	public boolean addProductInCart(int userId, int productId, int qty) {
 		return orderDao.addProductInCart(userId, productId, qty);
+	}
+	
+	// 購物車中的商品減量
+	public boolean reduceProductInCart(int userId, int productId) {
+		return orderDao.reduceProductInCart(userId, productId);
 	}
 	
 	// 修改購物車中該商品的數量

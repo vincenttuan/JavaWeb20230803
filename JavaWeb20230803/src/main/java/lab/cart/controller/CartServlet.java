@@ -62,7 +62,19 @@ public class CartServlet extends HttpServlet {
 	
 	// 商品減量
 	private void reduceProduct(HttpServletRequest req, HttpServletResponse resp, int userId) throws ServletException, IOException {
-		
+		// 取得商品 id
+		int productId = Integer.parseInt(req.getParameter("product_id"));
+		// 該使用者的購物車中是否有此商品 
+		boolean hasProduct = orderService.hasProductInCartByUserId(userId, productId);
+		if(hasProduct) {
+ 			orderService.reduceProductInCart(userId, productId);
+ 		}
+		// 檢視購物車資料
+		List<Order> orders = orderService.findByUserId(userId, 0);
+		List<Product> products = productService.findAll();
+		req.setAttribute("orders", orders);
+		req.setAttribute("products", products);
+ 		req.getRequestDispatcher("/WEB-INF/jsp/lab/cart/cart.jsp").forward(req, resp);
 	}
 	
 	// 新增商品
