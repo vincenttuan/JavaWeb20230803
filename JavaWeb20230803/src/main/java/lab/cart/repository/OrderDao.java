@@ -56,6 +56,11 @@ public class OrderDao {
 		return false;
 	}
 	
+	// 購物車中的商品減量
+	public boolean reduceProductInCart(int userId, int productId) {
+		return modifyProductQtyInCartByProductId(userId, productId, 1);
+	}
+	
 	// 新增商品到購物車中
 	public boolean addProductInCart(int userId, int productId, int qty) {
 		String sql = "insert into orders(user_id, product_id, order_qty, order_status) values(?, ?, ?, ?)";
