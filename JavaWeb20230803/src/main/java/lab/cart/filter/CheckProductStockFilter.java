@@ -32,6 +32,7 @@ public class CheckProductStockFilter extends HttpFilter {
 			case "null": // 沒有傳入 action 參數
 				// 取得商品庫存量
 				int productQty = getProductStockById(productId);
+				System.out.println("productQty = " +productQty);
 				// 確認是否有足夠的庫存量 ?
 				if(productQty < 1) { // 庫存不足
 					errorMsg = "庫存不足";
