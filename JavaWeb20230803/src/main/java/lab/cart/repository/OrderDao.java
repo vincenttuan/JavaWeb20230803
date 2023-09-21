@@ -3,6 +3,7 @@ package lab.cart.repository;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,6 +94,17 @@ public class OrderDao {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	// 刪除購物車中沒有數量的資料紀錄
+	public void removeProductFromCartIfOutOfStock() {
+		String sql = "delete from orders where order_qty = 0";
+		try(Statement stmt = MySQL.getInstance().getConnection().createStatement()) {
+			// 執行刪除
+			stmt.executeUpdate(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
