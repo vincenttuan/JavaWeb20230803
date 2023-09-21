@@ -58,7 +58,7 @@ public class OrderDao {
 	
 	// 購物車中的商品減量
 	public boolean reduceProductInCart(int userId, int productId) {
-		return modifyProductQtyInCartByProductId(userId, productId, 1);
+		return modifyProductQtyInCartByProductId(userId, productId, -1);
 	}
 	
 	// 新增商品到購物車中
