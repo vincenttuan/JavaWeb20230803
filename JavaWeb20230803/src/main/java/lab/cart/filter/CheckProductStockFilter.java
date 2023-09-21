@@ -12,7 +12,7 @@ import lab.cart.repository.model.Product;
 import lab.cart.service.ProductService;
 
 // 確認商品庫存量的 Filter
-@WebFilter(value = "/lab/product")
+@WebFilter(value = "/lab/cart")
 public class CheckProductStockFilter extends HttpFilter {
 	
 	private ProductService productService = new ProductService();
